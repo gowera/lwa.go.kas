@@ -54,7 +54,7 @@ export const HeroCarousel = () => {
                 <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
                   Demander un Devis
                 </Button>
-                <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10">
+                <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground bg-slate-950 hover:bg-slate-800">
                   Nos Services
                 </Button>
               </div>
