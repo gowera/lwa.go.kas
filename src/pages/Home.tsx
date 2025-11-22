@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Wrench, Droplets, Settings, CheckCircle, Clock, Shield } from "lucide-react";
+import { Wrench, Droplets, Settings, CheckCircle, Clock, Shield, Star, Quote } from "lucide-react";
 import serviceRepair from "@/assets/service-repair.jpg";
 import serviceInstallation from "@/assets/service-installation.jpg";
 import serviceMaintenance from "@/assets/service-maintenance.jpg";
@@ -115,6 +115,59 @@ const Home = () => {
                 <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
                 <p className="text-muted-foreground">{feature.description}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ce Que Disent Nos Clients</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              La satisfaction de nos clients est notre plus grande fierté
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Jean-Pierre Mukendi",
+                role: "Propriétaire",
+                comment: "Service exceptionnel! L'équipe d'Oredy a résolu notre problème de fuite en moins d'une heure. Professionnels et efficaces.",
+                rating: 5,
+              },
+              {
+                name: "Marie Kasongo",
+                role: "Gérante Restaurant",
+                comment: "Installation impeccable de notre système de plomberie. Très satisfaite du travail et du respect des délais.",
+                rating: 5,
+              },
+              {
+                name: "David Ngandu",
+                role: "Chef d'Entreprise",
+                comment: "Je recommande vivement Oredy Technologies. Équipe qualifiée, prix raisonnables et excellent service après-vente.",
+                rating: 5,
+              },
+            ].map((testimonial, index) => (
+              <Card key={index} className="relative hover:shadow-xl transition-shadow duration-300">
+                <CardContent className="p-6">
+                  <Quote className="h-10 w-10 text-primary/20 mb-4" />
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 fill-accent text-accent" />
+                    ))}
+                  </div>
+                  <p className="text-muted-foreground mb-6 italic">
+                    "{testimonial.comment}"
+                  </p>
+                  <div className="border-t pt-4">
+                    <p className="font-semibold text-foreground">{testimonial.name}</p>
+                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
