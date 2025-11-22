@@ -42,7 +42,7 @@ export const HeroCarousel = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/50" />
           </div>
 
-          <div className="relative h-full container mx-auto px-4 flex items-center">
+          <div className="relative h-full container mx-auto px-4 flex items-center bg-[#2c8f2c]/0">
             <div className="max-w-2xl text-primary-foreground ml-0">
               <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
                 {slide.title}
