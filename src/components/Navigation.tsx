@@ -33,7 +33,7 @@ export const Navigation = () => {
             {navLinks.map(link => <Link key={link.path} to={link.path} className={`text-sm font-medium transition-colors ${isActive(link.path) ? "text-primary" : "text-foreground/80 hover:text-primary"}`}>
                 {link.label}
               </Link>)}
-            <Button asChild className="bg-accent hover:bg-accent/90">
+            <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
               <a href="tel:+243996886079">
                 <Phone className="mr-2 h-4 w-4" />
                 +243 996 886 079
@@ -53,7 +53,7 @@ export const Navigation = () => {
               {navLinks.map(link => <Link key={link.path} to={link.path} onClick={() => setIsOpen(false)} className={`text-sm font-medium transition-colors ${isActive(link.path) ? "text-primary" : "text-foreground/80 hover:text-primary"}`}>
                   {link.label}
                 </Link>)}
-              <Button asChild className="bg-accent hover:bg-accent/90 w-full">
+              <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground w-full">
                 <a href="tel:+243996886079">
                   <Phone className="mr-2 h-4 w-4" />
                   +243 996 886 079
