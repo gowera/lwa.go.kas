@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 import { Phone, MapPin, Mail } from "lucide-react";
 import logo from "@/assets/logo.png";
-
 export const Footer = () => {
-  return (
-    <footer className="bg-primary text-primary-foreground">
+  return <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div>
-            <img src={logo} alt="Oredy Technologies" className="h-16 w-auto mb-4 brightness-0 invert" />
+            <img src={logo} alt="Oredy Technologies" className="h-16 w-auto mb-4 brightness-0 invert rounded-md shadow-md object-contain opacity-100" />
             <p className="text-primary-foreground/80 text-sm">
               Votre partenaire fiable en plomberie à Goma. Services professionnels et équipe qualifiée à votre service.
             </p>
@@ -74,6 +72,5 @@ export const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
