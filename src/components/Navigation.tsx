@@ -26,6 +26,10 @@ export const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img src={logo} alt="Oredy Technologies" className="h-12 w-auto rounded-md shadow-md object-contain" />
+            <div className="flex flex-col">
+              <span className="text-lg font-bold text-foreground">Oredy Technologies</span>
+              <span className="text-xs text-muted-foreground">Votre partenaire fiable en plomberie</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
