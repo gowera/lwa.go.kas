@@ -39,22 +39,22 @@ export const HeroCarousel = () => {
           <div className="absolute inset-0 bg-cover bg-center" style={{
         backgroundImage: `url(${slide.image})`
       }}>
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/50" />
+            <div className="absolute inset-0 bg-black/30" />
           </div>
 
           <div className="relative h-full container mx-auto px-4 flex-row bg-white/0 flex items-center justify-start">
-            <div className="max-w-2xl text-primary-foreground ml-0">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <div className="max-w-2xl text-white ml-0">
+              <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-in fade-in slide-in-from-bottom-4 duration-700" style={{textShadow: '2px 4px 8px rgba(0,0,0,0.8)'}}>
                 {slide.title}
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-primary-foreground/90 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
+              <p className="text-xl md:text-2xl mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150" style={{textShadow: '2px 4px 6px rgba(0,0,0,0.7)'}}>
                 {slide.subtitle}
               </p>
               <div className="flex flex-wrap gap-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
                 <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
                   Demander un Devis
                 </Button>
-                <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground bg-slate-950 hover:bg-slate-800">
+                <Button size="lg" variant="outline" className="border-white text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm">
                   Nos Services
                 </Button>
               </div>
