@@ -16,6 +16,7 @@ export const ImageComparison = ({
 }: ImageComparisonProps) => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleMove = (clientX: number) => {
@@ -28,7 +29,10 @@ export const ImageComparison = ({
     setSliderPosition(Math.min(Math.max(percentage, 0), 100));
   };
 
-  const handleMouseDown = () => setIsDragging(true);
+  const handleMouseDown = () => {
+    setIsDragging(true);
+    setHasInteracted(true);
+  };
   
   const handleMouseUp = () => setIsDragging(false);
 
@@ -101,7 +105,7 @@ export const ImageComparison = ({
         className="absolute top-0 bottom-0 w-1 bg-white shadow-lg z-20 transition-opacity"
         style={{ left: `${sliderPosition}%` }}
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center border-2 border-primary group-hover:scale-110 transition-transform">
+        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center border-2 border-primary group-hover:scale-110 transition-transform ${!hasInteracted ? 'animate-pulse' : ''}`}>
           <ChevronLeft className="h-4 w-4 text-primary absolute left-1" />
           <ChevronRight className="h-4 w-4 text-primary absolute right-1" />
         </div>
