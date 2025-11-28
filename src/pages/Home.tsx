@@ -8,6 +8,12 @@ import { Wrench, Droplets, Settings, CheckCircle, Clock, Shield, Star, Quote } f
 import serviceRepair from "@/assets/service-repair.jpg";
 import serviceInstallation from "@/assets/service-installation.jpg";
 import serviceMaintenance from "@/assets/service-maintenance.jpg";
+import project1Before from "@/assets/project-1-before.jpg";
+import project1After from "@/assets/project-1-after.jpg";
+import project2Before from "@/assets/project-2-before.jpg";
+import project2After from "@/assets/project-2-after.jpg";
+import project3Before from "@/assets/project-3-before.jpg";
+import project3After from "@/assets/project-3-after.jpg";
 const Home = () => {
   const services = [{
     icon: Wrench,
@@ -78,8 +84,78 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
+      {/* Projects Gallery Section */}
       <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Nos Projets Réalisés</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Découvrez la qualité de notre travail à travers nos transformations avant/après
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Rénovation Salle de Bain",
+                before: project1Before,
+                after: project1After,
+                description: "Remplacement complet de la tuyauterie et des fixtures"
+              },
+              {
+                title: "Installation Cuisine",
+                before: project2Before,
+                after: project2After,
+                description: "Modernisation du système de plomberie sous l'évier"
+              },
+              {
+                title: "Chauffe-eau Moderne",
+                before: project3Before,
+                after: project3After,
+                description: "Installation d'un système de chauffage d'eau efficace"
+              }
+            ].map((project, index) => (
+              <Card key={index} className="group overflow-hidden hover:shadow-2xl transition-all duration-300">
+                <CardContent className="p-0">
+                  <div className="relative">
+                    {/* Before Image */}
+                    <div className="relative h-64 overflow-hidden">
+                      <img 
+                        src={project.before} 
+                        alt={`${project.title} - Avant`}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute top-4 left-4 bg-destructive text-destructive-foreground px-3 py-1 rounded-md font-semibold text-sm">
+                        Avant
+                      </div>
+                    </div>
+                    
+                    {/* After Image */}
+                    <div className="relative h-64 overflow-hidden">
+                      <img 
+                        src={project.after} 
+                        alt={`${project.title} - Après`}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute top-4 left-4 bg-primary text-primary-foreground px-3 py-1 rounded-md font-semibold text-sm">
+                        Après
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                    <p className="text-muted-foreground">{project.description}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Pourquoi Choisir Oredy?</h2>
