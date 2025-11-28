@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { HeroCarousel } from "@/components/HeroCarousel";
+import { ImageComparison } from "@/components/ImageComparison";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Wrench, Droplets, Settings, CheckCircle, Clock, Shield, Star, Quote } from "lucide-react";
@@ -117,31 +118,12 @@ const Home = () => {
             ].map((project, index) => (
               <Card key={index} className="group overflow-hidden hover:shadow-2xl transition-all duration-300">
                 <CardContent className="p-0">
-                  <div className="relative">
-                    {/* Before Image */}
-                    <div className="relative h-64 overflow-hidden">
-                      <img 
-                        src={project.before} 
-                        alt={`${project.title} - Avant`}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute top-4 left-4 bg-destructive text-destructive-foreground px-3 py-1 rounded-md font-semibold text-sm">
-                        Avant
-                      </div>
-                    </div>
-                    
-                    {/* After Image */}
-                    <div className="relative h-64 overflow-hidden">
-                      <img 
-                        src={project.after} 
-                        alt={`${project.title} - Après`}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute top-4 left-4 bg-primary text-primary-foreground px-3 py-1 rounded-md font-semibold text-sm">
-                        Après
-                      </div>
-                    </div>
-                  </div>
+                  <ImageComparison
+                    beforeImage={project.before}
+                    afterImage={project.after}
+                    beforeLabel="Avant"
+                    afterLabel="Après"
+                  />
                   
                   <div className="p-6">
                     <h3 className="text-xl font-bold mb-2">{project.title}</h3>
