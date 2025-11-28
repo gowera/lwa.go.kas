@@ -133,6 +133,12 @@ const Home = () => {
               </Card>
             ))}
           </div>
+
+          <div className="text-center mt-12">
+            <Button asChild size="lg" className="bg-primary hover:bg-primary-light">
+              <Link to="/gallery">Voir Tous les Projets</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
