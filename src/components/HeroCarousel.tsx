@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { QuoteDialog } from "@/components/QuoteDialog";
 import hero1 from "@/assets/hero-1.jpg";
 import hero2 from "@/assets/hero-2.jpg";
 import hero3 from "@/assets/hero-3.jpg";
@@ -51,11 +53,13 @@ export const HeroCarousel = () => {
                 {slide.subtitle}
               </p>
               <div className="flex flex-wrap gap-4 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300">
-                <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                  Demander un Devis
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm">
-                  Nos Services
+                <QuoteDialog>
+                  <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
+                    Demander un Devis
+                  </Button>
+                </QuoteDialog>
+                <Button asChild size="lg" variant="outline" className="border-white text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm">
+                  <Link to="/services">Nos Services</Link>
                 </Button>
               </div>
             </div>
