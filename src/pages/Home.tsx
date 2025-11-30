@@ -5,6 +5,7 @@ import { HeroCarousel } from "@/components/HeroCarousel";
 import { ImageComparison } from "@/components/ImageComparison";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Wrench, Droplets, Settings, CheckCircle, Clock, Shield, Star, Quote } from "lucide-react";
 import serviceRepair from "@/assets/service-repair.jpg";
 import serviceInstallation from "@/assets/service-installation.jpg";
@@ -205,6 +206,90 @@ const Home = () => {
                   </div>
                 </CardContent>
               </Card>)}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Questions Fréquentes</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Trouvez rapidement des réponses à vos questions sur nos services de plomberie
+            </p>
+          </div>
+
+          <div className="max-w-3xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-4">
+              <AccordionItem value="item-1" className="bg-background rounded-lg px-6 border-none">
+                <AccordionTrigger className="text-left hover:no-underline">
+                  Intervenez-vous en cas d'urgence?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Oui, nous offrons un service d'intervention d'urgence disponible 24/7. 
+                  Nos techniciens peuvent intervenir rapidement en cas de fuite, rupture de canalisation 
+                  ou tout autre problème urgent nécessitant une attention immédiate.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-2" className="bg-background rounded-lg px-6 border-none">
+                <AccordionTrigger className="text-left hover:no-underline">
+                  Quels sont vos tarifs?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Nos tarifs varient selon le type d'intervention nécessaire. Nous offrons toujours 
+                  un devis gratuit et détaillé avant de commencer les travaux. N'hésitez pas à nous 
+                  contacter pour une estimation personnalisée de votre projet.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-3" className="bg-background rounded-lg px-6 border-none">
+                <AccordionTrigger className="text-left hover:no-underline">
+                  Offrez-vous une garantie sur vos travaux?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Oui, tous nos travaux sont garantis. La durée de la garantie dépend du type 
+                  d'intervention réalisée. Pour les installations neuves, nous offrons généralement 
+                  une garantie de 2 ans, et pour les réparations, une garantie de 6 mois minimum.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-4" className="bg-background rounded-lg px-6 border-none">
+                <AccordionTrigger className="text-left hover:no-underline">
+                  Dans quelles zones intervenez-vous?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Nous intervenons principalement à Kinshasa et dans ses environs. Pour les projets 
+                  importants, nous pouvons également nous déplacer dans d'autres villes. 
+                  Contactez-nous pour vérifier si nous couvrons votre zone.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-5" className="bg-background rounded-lg px-6 border-none">
+                <AccordionTrigger className="text-left hover:no-underline">
+                  Combien de temps prend une intervention typique?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  La durée dépend de la complexité du problème. Une réparation simple peut prendre 
+                  1-2 heures, tandis qu'une installation complète de salle de bain peut nécessiter 
+                  plusieurs jours. Nous vous donnons toujours une estimation du temps nécessaire 
+                  lors du devis.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-6" className="bg-background rounded-lg px-6 border-none">
+                <AccordionTrigger className="text-left hover:no-underline">
+                  Dois-je fournir les matériaux?
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  Non, nous nous occupons de l'achat de tous les matériaux nécessaires. 
+                  Nous travaillons avec des fournisseurs de confiance pour garantir la qualité 
+                  des équipements. Toutefois, si vous avez déjà des matériaux spécifiques, 
+                  nous pouvons les utiliser après vérification de leur conformité.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </div>
       </section>
