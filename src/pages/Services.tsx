@@ -2,6 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { QuoteDialog } from "@/components/QuoteDialog";
 import { 
   Wrench, 
   Droplets, 
@@ -10,7 +11,10 @@ import {
   Zap,
   Thermometer,
   Droplet,
-  PipetteIcon as Pipe
+  PipetteIcon as Pipe,
+  CheckCircle,
+  Clock,
+  FileText
 } from "lucide-react";
 import serviceRepair from "@/assets/service-repair.jpg";
 import serviceInstallation from "@/assets/service-installation.jpg";
@@ -22,6 +26,7 @@ const Services = () => {
       icon: Wrench,
       title: "Réparation de Plomberie",
       description: "Réparation professionnelle de tous types de problèmes de plomberie.",
+      pricing: "À partir de 5 000 FC",
       details: [
         "Réparation de fuites d'eau",
         "Débouchage de canalisations",
@@ -29,11 +34,18 @@ const Services = () => {
         "Réparation de WC et chasse d'eau",
       ],
       image: serviceRepair,
+      process: [
+        "Diagnostic initial gratuit",
+        "Devis détaillé et transparent",
+        "Intervention rapide sous 24h",
+        "Garantie sur les réparations"
+      ]
     },
     {
       icon: Droplets,
       title: "Installation Sanitaire",
       description: "Installation complète d'équipements sanitaires neufs ou de remplacement.",
+      pricing: "À partir de 50 000 FC",
       details: [
         "Installation de salles de bain",
         "Installation de cuisines",
@@ -41,11 +53,18 @@ const Services = () => {
         "Installation de systèmes d'évacuation",
       ],
       image: serviceInstallation,
+      process: [
+        "Consultation et planification",
+        "Fourniture des matériaux de qualité",
+        "Installation professionnelle",
+        "Test complet et mise en service"
+      ]
     },
     {
       icon: Settings,
       title: "Maintenance Préventive",
       description: "Entretien régulier pour éviter les pannes et prolonger la durée de vie.",
+      pricing: "À partir de 15 000 FC/visite",
       details: [
         "Inspection complète des installations",
         "Détartrage de tuyauterie",
@@ -53,6 +72,12 @@ const Services = () => {
         "Vérification des systèmes",
       ],
       image: serviceMaintenance,
+      process: [
+        "Évaluation de vos installations",
+        "Plan de maintenance personnalisé",
+        "Interventions régulières planifiées",
+        "Rapport détaillé après chaque visite"
+      ]
     },
   ];
 
@@ -123,18 +148,49 @@ const Services = () => {
                     </div>
                     <h2 className="text-3xl font-bold">{service.title}</h2>
                   </div>
-                  <p className="text-muted-foreground text-lg mb-6">{service.description}</p>
-                  <ul className="space-y-3 mb-6">
-                    {service.details.map((detail, idx) => (
-                      <li key={idx} className="flex items-start">
-                        <span className="inline-block w-2 h-2 rounded-full bg-accent mt-2 mr-3 flex-shrink-0" />
-                        <span className="text-foreground">{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button className="bg-primary hover:bg-primary-light">
-                    Demander un Devis
-                  </Button>
+                  <p className="text-muted-foreground text-lg mb-4">{service.description}</p>
+                  
+                  <div className="inline-block bg-accent/10 text-accent font-bold px-4 py-2 rounded-lg mb-6">
+                    💰 {service.pricing}
+                  </div>
+                  
+                  <div className="mb-6">
+                    <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary" />
+                      Services Inclus
+                    </h3>
+                    <ul className="space-y-3">
+                      {service.details.map((detail, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <span className="inline-block w-2 h-2 rounded-full bg-accent mt-2 mr-3 flex-shrink-0" />
+                          <span className="text-foreground">{detail}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mb-6">
+                    <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
+                      <FileText className="h-5 w-5 text-primary" />
+                      Notre Processus
+                    </h3>
+                    <div className="space-y-2">
+                      {service.process.map((step, idx) => (
+                        <div key={idx} className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm flex-shrink-0">
+                            {idx + 1}
+                          </div>
+                          <span className="text-foreground">{step}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <QuoteDialog>
+                    <Button className="bg-primary hover:bg-primary-light">
+                      Demander un Devis Gratuit
+                    </Button>
+                  </QuoteDialog>
                 </div>
               </div>
             ))}
@@ -170,6 +226,56 @@ const Services = () => {
         </div>
       </section>
 
+      {/* Why Choose Us */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Pourquoi Choisir Oredy?</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Notre engagement envers l'excellence à chaque étape
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <Card className="text-center">
+              <CardContent className="pt-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                  <Clock className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Intervention Rapide</h3>
+                <p className="text-muted-foreground">
+                  Service d'urgence 24/7 avec intervention sous 2 heures pour les urgences
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center">
+              <CardContent className="pt-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                  <CheckCircle className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Garantie Qualité</h3>
+                <p className="text-muted-foreground">
+                  Tous nos travaux sont garantis avec suivi après-vente personnalisé
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center">
+              <CardContent className="pt-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+                  <FileText className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Devis Transparent</h3>
+                <p className="text-muted-foreground">
+                  Tarification claire et détaillée sans frais cachés ni surprises
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
@@ -179,9 +285,11 @@ const Services = () => {
           <p className="text-xl mb-8 text-primary-foreground/90 max-w-2xl mx-auto">
             Contactez-nous pour discuter de vos besoins et obtenir un devis gratuit
           </p>
-          <Button size="lg" className="bg-accent hover:bg-accent/90">
-            Contactez-Nous Maintenant
-          </Button>
+          <QuoteDialog>
+            <Button size="lg" className="bg-accent hover:bg-accent/90">
+              Demander un Devis Gratuit
+            </Button>
+          </QuoteDialog>
         </div>
       </section>
 
