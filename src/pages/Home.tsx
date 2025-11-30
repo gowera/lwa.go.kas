@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useInView } from "react-intersection-observer";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { HeroCarousel } from "@/components/HeroCarousel";
@@ -17,6 +18,16 @@ import project2After from "@/assets/project-2-after.jpg";
 import project3Before from "@/assets/project-3-before.jpg";
 import project3After from "@/assets/project-3-after.jpg";
 const Home = () => {
+  const { ref: testimonialsRef, inView: testimonialsInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const { ref: faqRef, inView: faqInView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
   const services = [{
     icon: Wrench,
     title: "Réparation",
@@ -175,7 +186,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div ref={testimonialsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[{
             name: "Jean-Pierre Mukendi",
             role: "Propriétaire",
@@ -191,7 +202,15 @@ const Home = () => {
             role: "Chef d'Entreprise",
             comment: "Je recommande vivement Oredy Technologies. Équipe qualifiée, prix raisonnables et excellent service après-vente.",
             rating: 5
-          }].map((testimonial, index) => <Card key={index} className="relative hover:shadow-xl transition-shadow duration-300">
+          }].map((testimonial, index) => <Card 
+                key={index} 
+                className={`relative hover:shadow-xl transition-all duration-500 ${
+                  testimonialsInView 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: `${index * 150}ms` }}
+              >
                 <CardContent className="p-6">
                   <Quote className="h-10 w-10 text-primary/20 mb-4" />
                   <div className="flex gap-1 mb-4">
@@ -220,7 +239,12 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="max-w-3xl mx-auto">
+          <div 
+            ref={faqRef}
+            className={`max-w-3xl mx-auto transition-all duration-700 ${
+              faqInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
             <Accordion type="single" collapsible className="space-y-4">
               <AccordionItem value="item-1" className="bg-background rounded-lg px-6 border-none">
                 <AccordionTrigger className="text-left hover:no-underline">
