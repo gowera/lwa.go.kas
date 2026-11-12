@@ -1,77 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    /* Brand Colors - Oredy Blue Palette */
+    /* Institutional charte: bleu nuit dominant, or secondaire, blanc */
     --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --foreground: 222 45% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 222 45% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 222 45% 12%;
 
-    /* Primary - Oredy Blue (from logo) */
-    --primary: 240 100% 35%;
-    --primary-foreground: 0 0% 100%;
-    --primary-light: 240 100% 45%;
-    --primary-dark: 240 100% 25%;
+    --primary: 221 62% 16%;
+    --primary-foreground: 42 60% 97%;
 
-    /* Secondary - Light Grey */
-    --secondary: 220 15% 96%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 41 82% 52%;
+    --secondary-foreground: 221 62% 12%;
 
-    /* Accent - Vibrant Orange for CTAs */
-    --accent: 25 95% 53%;
-    --accent-foreground: 0 0% 100%;
+    --muted: 220 25% 96%;
+    --muted-foreground: 221 15% 42%;
 
-    --muted: 220 15% 96%;
-    --muted-foreground: 220 9% 46%;
+    --accent: 41 82% 52%;
+    --accent-foreground: 221 62% 12%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 240 100% 35%;
+    --border: 220 20% 90%;
+    --input: 220 20% 90%;
+    --ring: 41 82% 52%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    /* Custom Design Tokens */
-    --gradient-hero: linear-gradient(135deg, hsl(240 100% 35%), hsl(240 100% 45%));
-    --gradient-overlay: linear-gradient(to bottom, rgba(0, 0, 35, 0.7), rgba(0, 0, 35, 0.4));
-    
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-    
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Named charte tokens */
+    --navy: 221 62% 16%;
+    --navy-800: 221 52% 22%;
+    --navy-700: 221 45% 30%;
+    --navy-300: 220 40% 68%;
+    --navy-100: 220 40% 94%;
+    --gold: 41 82% 52%;
+    --gold-soft: 41 72% 72%;
+    --gold-deep: 38 78% 38%;
+    --paper: 40 33% 98%;
+    --ink: 222 45% 12%;
+    --line: 220 20% 90%;
+
+    --gradient-navy: linear-gradient(155deg, hsl(221 62% 16%), hsl(221 52% 27%));
+    --gradient-gold: linear-gradient(135deg, hsl(41 82% 52%), hsl(38 88% 63%));
+
+    --shadow-soft: 0 1px 2px hsl(221 62% 16% / 0.04), 0 8px 24px -12px hsl(221 62% 16% / 0.12);
+    --shadow-card: 0 1px 3px hsl(221 62% 16% / 0.05), 0 18px 40px -20px hsl(221 62% 16% / 0.18);
+    --shadow-lift: 0 2px 4px hsl(221 62% 16% / 0.06), 0 26px 50px -22px hsl(221 62% 16% / 0.28);
+    --shadow-gold: 0 10px 30px -12px hsl(41 82% 52% / 0.45);
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground;
-    font-family: 'Lora', serif;
-    font-weight: 400;
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    font-variation-settings: "SOFT" 0, "WONK" 0;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: hsl(var(--gold) / 0.28);
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-[1240px] px-5 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-gold-deep;
+  }
+
+  .card-premium {
+    @apply rounded-xl border border-line bg-card shadow-soft transition-all duration-300;
+  }
+
+  .card-premium-hover {
+    @apply hover:-translate-y-1 hover:shadow-card;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-secondary px-6 py-3 text-sm font-bold uppercase tracking-[0.08em] text-secondary-foreground shadow-gold transition-all duration-300 hover:brightness-105 hover:shadow-lift focus-visible:brightness-105;
+  }
+
+  .btn-navy {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-bold uppercase tracking-[0.08em] text-primary-foreground shadow-soft transition-all duration-300 hover:bg-navy-800 hover:shadow-card;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-navy/25 bg-transparent px-6 py-3 text-sm font-bold uppercase tracking-[0.08em] text-primary transition-all duration-300 hover:border-navy hover:bg-navy-100/60;
+  }
+
+  .rule-gold {
+    @apply h-px w-14 bg-gradient-to-r from-gold to-transparent;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-navy-gradient {
+    background: var(--gradient-navy);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
   }
 }
