@@ -1,4 +1,6 @@
-import logoAsset from "@/assets/logo.png.asset.json";
+import logoAsset from "@/assets/embleme.webp.asset.json";
+import { company } from "@/data/company";
+import { useI18n } from "@/i18n/LanguageProvider";
 import { cn } from "@/lib/utils";
 
 type LogoProps = {
@@ -20,18 +22,19 @@ export function Logo({
   showSlogan = true,
   textClassName,
 }: LogoProps) {
+  const { t } = useI18n();
   return (
     <span className={cn("flex items-center gap-3", className)}>
       <span
         className={cn(
           "flex shrink-0 items-center justify-center overflow-hidden rounded-full",
-          onDark ? "bg-white p-1 shadow-soft" : "",
+          onDark ? "bg-background p-1 shadow-soft" : "",
         )}
         style={{ width: size, height: size }}
       >
         <img
           src={logoAsset.url}
-          alt="Logo officiel LWA.GO.KAS"
+          alt={t("media.logo")}
           width={size}
           height={size}
           className="h-full w-full object-contain"
@@ -41,12 +44,12 @@ export function Logo({
       </span>
       {showText && (
         <span className="flex flex-col leading-none">
-          <span className={cn("font-display text-[1.05rem] font-semibold tracking-[0.06em]", textClassName)}>
-            LWA.GO.KAS
+          <span className={cn("font-display text-[0.98rem] font-semibold tracking-[0.06em]", textClassName)}>
+            {company.name}
           </span>
           {showSlogan && (
-            <span className={cn("mt-1 text-[0.62rem] font-medium uppercase tracking-[0.14em] text-muted-foreground")}>
-              Professionnalisme, engagement
+            <span className={cn("mt-1 text-[0.56rem] font-medium uppercase tracking-normal text-muted-foreground")}>
+              {t("brand.shortSlogan")}
             </span>
           )}
         </span>

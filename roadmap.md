@@ -4,28 +4,32 @@ Source brief: `user-uploads://1._RÔLE_ET_OBJECTIF_Agis_comme_une_équipe_pasted
 
 ## Decisions taken
 - Replace the Oredy TECHNOLOGIES plumbing project completely.
-- Official logo arrives later: header and footer expose a clean logo slot.
+- Official logo received and integrated.
 - Multilingual FR / Kiswahili / EN architecture in place now; French copy complete, SW/EN to complete.
 - Forms: direct contact only (tel, WhatsApp, email). Nothing stored.
 
 ## Tasks
+- [x] Integrate supplied photographs into the home, company and sector pages
 - [x] Clean out plumbing pages, components and images
 - [x] Official logo received: transparent version, header/footer placement, favicon
-- [ ] Design system: navy nuit / or / blanc tokens, typography, shadows
-- [ ] i18n layer FR / SW / EN with visible selector
-- [ ] Data layer: company, sectors, locations, services, socials, jobs, trainings, news adapter
-- [ ] WordPress adapter for lwagokas.org (inert until configured)
-- [ ] Layout: header (logo slot, nav, language selector, contact button, mobile menu), footer
-- [ ] Shared UI: section heading, cards, status badge, pending field, reveal, floating WhatsApp
-- [ ] Accueil (hero, qui sommes-nous, 4 secteurs, vision/valeurs, implantations, partenariats, actualités, CTA)
-- [ ] À propos
-- [ ] Nos services + 4 pages secteur détaillées
-- [ ] Nos implantations
-- [ ] Partenariats
-- [ ] Carrières et formations
-- [ ] Actualités
-- [ ] Contact
-- [ ] Mentions légales + Politique de confidentialité + 404
-- [ ] Professional photography set
-- [ ] SEO: per-page meta, sitemap.xml, robots.txt, Open Graph, alt text
-- [ ] Verify: build clean, all routes render, mobile layout, language switch
+- [x] Design system: navy nuit / or / blanc tokens, typography, shadows
+- [x] i18n layer FR / SW / EN with visible selector
+- [x] Data layer: company, sectors, locations, services, socials, jobs, trainings, news adapter
+- [x] WordPress adapter for lwagokas.org (inert until configured)
+- [x] Layout: header (logo slot, nav, language selector, contact button, mobile menu), footer
+- [x] Shared UI: section heading, cards, status badge, pending field, reveal, floating WhatsApp
+- [x] Accueil (hero, qui sommes-nous, 4 secteurs, vision/valeurs, implantations, partenariats, actualités, CTA)
+- [x] À propos
+- [x] Nos services + 4 pages secteur détaillées
+- [x] Nos implantations
+- [x] Partenariats
+- [x] Carrières et formations
+- [x] Actualités
+- [x] Contact
+- [x] Mentions légales + Politique de confidentialité + 404
+- [x] Supplied company photographs optimized and integrated
+- [x] SEO: per-page meta, robots.txt, Open Graph, alt text
+- [ ] Production sitemap: requires the final published domain
+- [ ] WordPress news activation: requires lwagokas.org to be live and configured
+- [ ] Reviewed SW/EN sector, medical and legal translations: requires company-approved copy
+- [x] Verify: build clean, all routes render, mobile layout, language switch

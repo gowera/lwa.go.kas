@@ -1,3 +1,4 @@
+import { useI18n } from "@/i18n/LanguageProvider";
 import { Outlet } from "react-router-dom";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
@@ -6,6 +7,7 @@ import { ScrollToTop } from "./ScrollToTop";
 
 /** Shared shell: skip link, header, page content, footer and floating WhatsApp. */
 export function Layout() {
+  const { t } = useI18n();
   return (
     <div className="flex min-h-screen flex-col">
       <ScrollToTop />
@@ -13,7 +15,7 @@ export function Layout() {
         href="#contenu"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
       >
-        Aller au contenu
+        {t("common.skipContent")}
       </a>
       <Header />
       <main id="contenu" className="flex-1">

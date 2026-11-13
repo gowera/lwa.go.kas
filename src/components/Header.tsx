@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { MapPin, Menu, Phone, X } from "lucide-react";
+import { Button } from "./ui/button";
 import { Logo } from "./Logo";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { TranslationNotice } from "./TranslationNotice";
@@ -30,7 +31,7 @@ export function Header() {
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
     cn(
-      "relative py-1 text-[0.82rem] font-semibold tracking-[0.01em] transition-colors",
+      "relative whitespace-nowrap py-1 text-[0.75rem] font-semibold tracking-[0.01em] transition-colors",
       isActive ? "text-gold-deep" : "text-primary/80 hover:text-primary",
     );
 
@@ -44,8 +45,7 @@ export function Header() {
           <span className="flex min-w-0 items-center gap-2 text-navy-300">
             <MapPin className="h-3.5 w-3.5 shrink-0 text-gold-soft" aria-hidden />
             <span className="truncate">
-              {company.headquarters.city}, {company.headquarters.province} — {company.country ?? ""}
-              {company.headquarters.address}
+              {company.headquarters.city}, {company.headquarters.province} — {company.headquarters.country}
             </span>
           </span>
           <span className="flex items-center gap-4">
@@ -64,11 +64,11 @@ export function Header() {
       {/* Main bar */}
       <div className={cn("border-b border-line bg-background/95 backdrop-blur transition-shadow", scrolled && "shadow-soft")}>
         <div className="container-page flex items-center justify-between gap-4 py-3">
-          <Link to="/" aria-label="LWA.GO.KAS — Accueil" onClick={() => setMenuOpen(false)}>
+          <Link to="/" aria-label={`${company.name} — ${t("nav.home")}`} onClick={() => setMenuOpen(false)}>
             <Logo size={44} />
           </Link>
 
-          <nav aria-label={t("nav.more")} className="hidden items-center gap-5 lg:flex xl:gap-7">
+          <nav aria-label={t("nav.more")} className="hidden items-center gap-3 lg:flex xl:gap-4">
             {navItems.map((item) => (
               <NavLink key={item.to} to={item.to} end={item.to === "/"} className={linkClass}>
                 {t(item.key)}
@@ -80,7 +80,7 @@ export function Header() {
             <Link to="/contact" className="btn-gold hidden px-4 py-2 text-[0.72rem] lg:inline-flex">
               {t("nav.contactCta")}
             </Link>
-            <button
+            <Button variant="outline" size="icon"
               type="button"
               onClick={() => setMenuOpen((v) => !v)}
               aria-expanded={menuOpen}
@@ -88,7 +88,7 @@ export function Header() {
               className="flex h-10 w-10 items-center justify-center rounded-md border border-line text-primary transition-colors hover:bg-navy-100/60 lg:hidden"
             >
               {menuOpen ? <X className="h-5 w-5" aria-hidden /> : <Menu className="h-5 w-5" aria-hidden />}
-            </button>
+            </Button>
           </div>
         </div>
 

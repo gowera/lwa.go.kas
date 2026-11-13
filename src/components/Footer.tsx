@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "./Logo";
+import { sectors } from "@/data/sectors";
 import { navItems, socialIcons, values } from "@/data/site";
 import { company, fullAddress, mailtoHref, primaryPhone, socials, telHref, whatsappHref } from "@/data/company";
 import { useI18n } from "@/i18n/LanguageProvider";
@@ -47,16 +48,14 @@ export function Footer() {
                 </Link>
               </li>
             )}
-            {["microfinance-services-financiers", "gardiennage-securite", "sante-services-medicaux", "developpement-economique-investissements"].map(
+            {sectors.map(s => s.slug).map(
               (slug) => (
                 <li key={slug}>
                   <Link
                     to={`/services/${slug}`}
                     className="text-[0.87rem] text-navy-300 transition-colors hover:text-gold-soft"
                   >
-                    {slug
-                      .replace(/-/g, " ")
-                      .replace(/^\w/, (c) => c.toUpperCase())}
+                    {t(`sector.${slug}.name`)}
                   </Link>
                 </li>
               ),
@@ -99,7 +98,7 @@ export function Footer() {
                     <span
                       title={`${social.label} — ${t("footer.followNote")}`}
                       aria-label={`${social.label} — ${t("footer.followNote")}`}
-                      className="flex h-9 w-9 items-center justify-center rounded-md border border-white/15 bg-white/5 text-navy-300"
+                      className="flex h-9 w-9 items-center justify-center rounded-md border border-primary-foreground/15 bg-primary-foreground/5 text-navy-300"
                     >
                       {Icon && <Icon className="h-4 w-4" aria-hidden />}
                     </span>
@@ -113,7 +112,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex h-9 w-9 items-center justify-center rounded-md border border-white/15 bg-white/5 text-navy-300 transition-colors hover:border-gold/50 hover:text-gold-soft"
+                    className="flex h-9 w-9 items-center justify-center rounded-md border border-primary-foreground/15 bg-primary-foreground/5 text-navy-300 transition-colors hover:border-gold/50 hover:text-gold-soft"
                   >
                     {Icon && <Icon className="h-4 w-4" aria-hidden />}
                   </a>
@@ -126,7 +125,7 @@ export function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-white/10">
+      <div className="border-t border-primary-foreground/10">
         <div className="container-page flex flex-col gap-3 py-5 text-[0.78rem] text-navy-300 sm:flex-row sm:items-center sm:justify-between">
           <span>
             © {year} {company.legalName}. {t("footer.rights")}

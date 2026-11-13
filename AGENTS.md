@@ -10,3 +10,7 @@
 - Forms in this version submit through direct contact channels (tel, WhatsApp, mailto) built from `src/data/company.ts`. No submissions are stored. Why: the user chose direct contact only for this version.
 - Colors, shadows and radii come from the semantic tokens in `src/index.css`; components use token-based utilities only. Why: hardcoded color utilities break theming and the navy/gold/white charte.
 - Each route sets its own SEO title and description via the `useSeo` hook. Why: per-page SEO is a brief requirement and the static `index.html` cannot cover every page.
+
+- Uploaded photo references live in `src/data/media.ts`; images do not establish operational status, authorizations, addresses or personal roles. Why: photos illustrate the company without turning assumptions into published facts.
+- Shared institutional interior pages are exported from `src/pages/PortalPages.tsx`, while the home and services index have their own modules. Why: common page shells and direct-contact flows stay consistent.
+- Sector and location display copy is mapped into the shared i18n dictionary from company data; unreviewed locale entries use French. Why: data remains authoritative and sensitive copy is never automatically translated.

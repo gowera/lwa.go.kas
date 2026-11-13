@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Globe } from "lucide-react";
 import { LOCALES, useI18n, type Locale } from "@/i18n/LanguageProvider";
+import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
 
 type LanguageSwitcherProps = {
@@ -33,7 +34,7 @@ export function LanguageSwitcher({ tone = "light", className }: LanguageSwitcher
 
   return (
     <div ref={wrapper} className={cn("relative", className)}>
-      <button
+      <Button variant="ghost"
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
@@ -42,14 +43,14 @@ export function LanguageSwitcher({ tone = "light", className }: LanguageSwitcher
         className={cn(
           "flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-[0.75rem] font-bold uppercase tracking-[0.12em] transition-colors",
           tone === "dark"
-            ? "border-white/25 text-primary-foreground hover:bg-white/10"
+            ? "border-primary-foreground/25 text-primary-foreground hover:bg-primary-foreground/10"
             : "border-line text-primary hover:bg-navy-100/60",
         )}
       >
         <Globe className="h-3.5 w-3.5" aria-hidden />
         {current.short}
         <ChevronDown className={cn("h-3 w-3 transition-transform", open && "rotate-180")} aria-hidden />
-      </button>
+      </Button>
       {open && (
         <ul
           role="listbox"
@@ -58,7 +59,7 @@ export function LanguageSwitcher({ tone = "light", className }: LanguageSwitcher
         >
           {LOCALES.map((option) => (
             <li key={option.code} role="option" aria-selected={option.code === locale}>
-              <button
+              <Button variant="ghost"
                 type="button"
                 onClick={() => {
                   setLocale(option.code as Locale);
@@ -71,7 +72,7 @@ export function LanguageSwitcher({ tone = "light", className }: LanguageSwitcher
               >
                 {option.label}
                 <span className="text-[0.7rem] font-semibold uppercase tracking-widest">{option.short}</span>
-              </button>
+              </Button>
             </li>
           ))}
         </ul>

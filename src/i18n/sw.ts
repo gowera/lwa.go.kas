@@ -1,3 +1,4 @@
+import { publicCopy } from "./publicCopy";
 import type { Dict } from "./types";
 
 /**
@@ -5,6 +6,7 @@ import type { Dict } from "./types";
  * financial and medical copy falls back to French until it is reviewed.
  */
 export const sw: Dict = {
+  ...publicCopy,
   "nav.home": "Mwanzo",
   "nav.about": "Kuhusu sisi",
   "nav.services": "Huduma zetu",

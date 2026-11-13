@@ -1,3 +1,4 @@
+import { useI18n } from "@/i18n/LanguageProvider";
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
@@ -16,6 +17,7 @@ type PageHeroProps = {
 
 /** Navy band that opens every interior page. */
 export function PageHero({ eyebrow, title, lead, crumbs, children, className }: PageHeroProps) {
+  const { t } = useI18n();
   return (
     <section className={cn("relative overflow-hidden bg-navy-gradient text-primary-foreground", className)}>
       <span
@@ -28,7 +30,7 @@ export function PageHero({ eyebrow, title, lead, crumbs, children, className }: 
       />
       <div className="container-page relative py-14 sm:py-16">
         {crumbs && crumbs.length > 0 && (
-          <nav aria-label="Fil d'Ariane" className="mb-5 flex flex-wrap items-center gap-1.5 text-[0.75rem] text-navy-300">
+          <nav aria-label={t("common.breadcrumb")} className="mb-5 flex flex-wrap items-center gap-1.5 text-[0.75rem] text-navy-300">
             {crumbs.map((crumb, index) => (
               <span key={crumb.label} className="flex items-center gap-1.5">
                 {crumb.to ? (

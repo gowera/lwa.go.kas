@@ -1,3 +1,4 @@
+import { publicCopy } from "./publicCopy";
 import type { Dict } from "./types";
 
 /**
@@ -5,6 +6,7 @@ import type { Dict } from "./types";
  * Other locales fall back to these values until they are reviewed.
  */
 export const fr: Dict = {
+  ...publicCopy,
   // Navigation
   "nav.home": "Accueil",
   "nav.about": "À propos",

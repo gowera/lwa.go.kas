@@ -1,0 +1,11 @@
+import facade from '@/assets/facade.webp.asset.json';
+import equipe from '@/assets/equipe.webp.asset.json';
+import groupe from '@/assets/equipe-groupe.webp.asset.json';
+import vehicules from '@/assets/vehicules.webp.asset.json';
+import collaborateurs from '@/assets/collaborateurs.webp.asset.json';
+import rencontre from '@/assets/collaborateurs-groupe.webp.asset.json';
+import entree from '@/assets/entree.webp.asset.json';
+import enseigne from '@/assets/enseigne.webp.asset.json';
+export const media = { facade: facade.url, equipe: equipe.url, groupe: groupe.url, vehicules: vehicules.url, collaborateurs: collaborateurs.url, rencontre: rencontre.url, entree: entree.url, enseigne: enseigne.url };
+export const sectorMedia = [media.entree, media.collaborateurs, media.vehicules, media.facade];
+export const gallery = Object.entries(media).map(([id, url]) => ({id, url, alt: `media.${id}`}));

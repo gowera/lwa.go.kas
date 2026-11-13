@@ -3,6 +3,7 @@ import { Mail, MessageCircle, Send } from "lucide-react";
 import { mailtoHref, whatsappHref } from "@/data/company";
 import { useI18n } from "@/i18n/LanguageProvider";
 import { cn } from "@/lib/utils";
+import { Button } from "./ui/button";
 import { PendingField } from "./PendingField";
 
 export type RequestField = {
@@ -110,13 +111,13 @@ export function RequestPanel({
               <MessageCircle className="h-4 w-4" aria-hidden />
               {t("common.whatsapp")}
             </a>
-            <button
+            <Button variant="outline"
               type="button"
               onClick={() => setComposed(null)}
               className="btn-outline px-4 py-2 text-[0.78rem]"
             >
               {t("common.backHome")}
-            </button>
+            </Button>
           </div>
         </div>
       ) : (
@@ -191,10 +192,10 @@ export function RequestPanel({
           </div>
 
           <div className="sm:col-span-2">
-            <button type="submit" className="btn-gold w-full sm:w-auto">
+            <Button variant="secondary" type="submit" className="btn-gold w-full sm:w-auto">
               <Send className="h-4 w-4" aria-hidden />
               {submitLabel}
-            </button>
+            </Button>
           </div>
 
           <p className="sm:col-span-2 text-[0.78rem] leading-relaxed text-muted-foreground">{note}</p>
