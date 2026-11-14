@@ -15,19 +15,11 @@ type PageHeroProps = {
   className?: string;
 };
 
-/** Navy band that opens every interior page. */
+/** Shared opening band for interior pages. */
 export function PageHero({ eyebrow, title, lead, crumbs, children, className }: PageHeroProps) {
   const { t } = useI18n();
   return (
     <section className={cn("relative overflow-hidden bg-navy-gradient text-primary-foreground", className)}>
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full border border-gold/20"
-      />
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -bottom-32 -left-16 h-80 w-80 rounded-full border border-gold/10"
-      />
       <div className="container-page relative py-14 sm:py-16">
         {crumbs && crumbs.length > 0 && (
           <nav aria-label={t("common.breadcrumb")} className="mb-5 flex flex-wrap items-center gap-1.5 text-[0.75rem] text-navy-300">

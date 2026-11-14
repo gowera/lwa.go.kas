@@ -44,7 +44,7 @@ export function Logo({
       </span>
       {showText && (
         <span className="flex flex-col leading-none">
-          <span className={cn("font-display text-[0.98rem] font-semibold tracking-[0.06em]", textClassName)}>
+          <span className={cn("font-display text-[0.98rem] font-bold tracking-normal", textClassName)}>
             {company.name}
           </span>
           {showSlogan && (

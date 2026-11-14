@@ -6,6 +6,7 @@ import collaborateurs from '@/assets/collaborateurs.webp.asset.json';
 import rencontre from '@/assets/collaborateurs-groupe.webp.asset.json';
 import entree from '@/assets/entree.webp.asset.json';
 import enseigne from '@/assets/enseigne.webp.asset.json';
-export const media = { facade: facade.url, equipe: equipe.url, groupe: groupe.url, vehicules: vehicules.url, collaborateurs: collaborateurs.url, rencontre: rencontre.url, entree: entree.url, enseigne: enseigne.url };
+import accueil from '@/assets/groupe-accueil.webp.asset.json';
+export const media = { accueil: accueil.url, facade: facade.url, equipe: equipe.url, groupe: groupe.url, vehicules: vehicules.url, collaborateurs: collaborateurs.url, rencontre: rencontre.url, entree: entree.url, enseigne: enseigne.url };
 export const sectorMedia = [media.entree, media.collaborateurs, media.vehicules, media.facade];
 export const gallery = Object.entries(media).map(([id, url]) => ({id, url, alt: `media.${id}`}));

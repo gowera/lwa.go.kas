@@ -9,6 +9,11 @@ Source brief: `user-uploads://1._RÔLE_ET_OBJECTIF_Agis_comme_une_équipe_pasted
 - Forms: direct contact only (tel, WhatsApp, email). Nothing stored.
 
 ## Tasks
+- [x] Replace home opening photograph with the newly supplied group image
+- [x] Restyle all pages in bright yellow, black and white, inspired by cabinet-amk.vercel.app
+- [x] Remove generic decorative elements
+- [ ] Hide Lovable badge: platform requires an editor role on a Pro plan or higher
+- [x] Verify refreshed desktop/mobile navigation and image framing using originals retrieved from asset storage; local Vite does not serve CDN paths
 - [x] Integrate supplied photographs into the home, company and sector pages
 - [x] Clean out plumbing pages, components and images
 - [x] Official logo received: transparent version, header/footer placement, favicon

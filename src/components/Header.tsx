@@ -31,8 +31,8 @@ export function Header() {
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
     cn(
-      "relative whitespace-nowrap py-1 text-[0.75rem] font-semibold tracking-[0.01em] transition-colors",
-      isActive ? "text-gold-deep" : "text-primary/80 hover:text-primary",
+      "relative whitespace-nowrap border-b-2 py-2 text-[0.75rem] font-semibold tracking-normal transition-colors",
+      isActive ? "border-secondary text-primary" : "border-transparent text-primary/80 hover:border-secondary hover:text-primary",
     );
 
   return (
@@ -77,9 +77,9 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <Link to="/contact" className="btn-gold hidden px-4 py-2 text-[0.72rem] lg:inline-flex">
-              {t("nav.contactCta")}
-            </Link>
+            <Button asChild variant="secondary" className="hidden text-xs lg:inline-flex">
+              <Link to="/contact">{t("nav.contactCta")}</Link>
+            </Button>
             <Button variant="outline" size="icon"
               type="button"
               onClick={() => setMenuOpen((v) => !v)}

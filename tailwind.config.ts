@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Fraunces", "Georgia", "serif"],
+        display: ["Manrope", "system-ui", "sans-serif"],
         body: ["Manrope", "system-ui", "sans-serif"],
       },
       colors: {

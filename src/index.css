@@ -4,57 +4,57 @@
 
 @layer base {
   :root {
-    /* Institutional charte: bleu nuit dominant, or secondaire, blanc */
+    /* Institutional palette: bright yellow, black and white. */
     --background: 0 0% 100%;
-    --foreground: 222 45% 12%;
+    --foreground: 0 0% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 45% 12%;
+    --card-foreground: 0 0% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 45% 12%;
+    --popover-foreground: 0 0% 8%;
 
-    --primary: 221 62% 16%;
-    --primary-foreground: 42 60% 97%;
+    --primary: 0 0% 6%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 41 82% 52%;
-    --secondary-foreground: 221 62% 12%;
+    --secondary: 54 100% 50%;
+    --secondary-foreground: 0 0% 6%;
 
-    --muted: 220 25% 96%;
-    --muted-foreground: 221 15% 42%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 38%;
 
-    --accent: 41 82% 52%;
-    --accent-foreground: 221 62% 12%;
+    --accent: 54 100% 50%;
+    --accent-foreground: 0 0% 6%;
 
     --destructive: 0 72% 45%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 20% 90%;
-    --input: 220 20% 90%;
-    --ring: 41 82% 52%;
+    --border: 0 0% 86%;
+    --input: 0 0% 86%;
+    --ring: 54 100% 40%;
 
-    --radius: 0.5rem;
+    --radius: 0.125rem;
 
     /* Named charte tokens */
-    --navy: 221 62% 16%;
-    --navy-800: 221 52% 22%;
-    --navy-700: 221 45% 30%;
-    --navy-300: 220 40% 68%;
-    --navy-100: 220 40% 94%;
-    --gold: 41 82% 52%;
-    --gold-soft: 41 72% 72%;
-    --gold-deep: 38 78% 38%;
-    --paper: 40 33% 98%;
-    --ink: 222 45% 12%;
-    --line: 220 20% 90%;
+    --navy: 0 0% 6%;
+    --navy-800: 0 0% 14%;
+    --navy-700: 0 0% 24%;
+    --navy-300: 0 0% 78%;
+    --navy-100: 0 0% 95%;
+    --gold: 54 100% 50%;
+    --gold-soft: 54 100% 64%;
+    --gold-deep: 50 100% 24%;
+    --paper: 0 0% 98%;
+    --ink: 0 0% 6%;
+    --line: 0 0% 86%;
 
-    --gradient-navy: linear-gradient(155deg, hsl(221 62% 16%), hsl(221 52% 27%));
-    --gradient-gold: linear-gradient(135deg, hsl(41 82% 52%), hsl(38 88% 63%));
+    --gradient-navy: linear-gradient(hsl(var(--primary)), hsl(var(--primary)));
+    --gradient-gold: linear-gradient(hsl(var(--secondary)), hsl(var(--secondary)));
 
-    --shadow-soft: 0 1px 2px hsl(221 62% 16% / 0.04), 0 8px 24px -12px hsl(221 62% 16% / 0.12);
-    --shadow-card: 0 1px 3px hsl(221 62% 16% / 0.05), 0 18px 40px -20px hsl(221 62% 16% / 0.18);
-    --shadow-lift: 0 2px 4px hsl(221 62% 16% / 0.06), 0 26px 50px -22px hsl(221 62% 16% / 0.28);
-    --shadow-gold: 0 10px 30px -12px hsl(41 82% 52% / 0.45);
+    --shadow-soft: 0 1px 3px hsl(var(--ink) / 0.06);
+    --shadow-card: 0 8px 24px -16px hsl(var(--ink) / 0.16);
+    --shadow-lift: 0 12px 28px -16px hsl(var(--ink) / 0.2);
+    --shadow-gold: 0 2px 4px hsl(var(--ink) / 0.08);
   }
 
   * {
@@ -96,7 +96,7 @@
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-gold-deep;
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-normal text-gold-deep;
   }
 
   .card-premium {
@@ -160,9 +160,10 @@
 }
 
 @layer components {
-  .hero-photo { min-height: 610px; height: min(720px, calc(100svh - 170px)); }
-  .hero-photo::after { content: ""; position: absolute; inset: 0; background: hsl(var(--primary) / 0.40); }
-  .hero-copy { text-shadow: 0 2px 16px hsl(var(--ink) / 0.8); }
+  .hero-photo { min-height: 580px; height: min(700px, calc(100svh - 170px)); }
+  .hero-photo::after { content: ""; position: absolute; inset: 0; background: hsl(var(--primary) / 0.32); }
+  .hero-copy { text-shadow: 0 2px 12px hsl(var(--ink) / 0.8); }
+  .hero-copy a { text-shadow: none; }
   .section-space { padding-block: 5rem; }
 }
-@media (max-width: 640px) { .hero-photo { height: auto; min-height: 660px; } .section-space { padding-block: 3rem; } }
+@media (max-width: 640px) { .hero-photo { height: auto; min-height: 620px; } .section-space { padding-block: 3rem; } }

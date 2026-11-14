@@ -8,7 +8,7 @@
 - Missing company data renders through `PendingField` with the label « Information à compléter ». Why: gaps must stay visible and editable rather than being filled with invented facts.
 - WordPress integration goes through `src/lib/wordpress.ts` only: one adapter that reads `VITE_WORDPRESS_URL`, returns empty data when unset, and never fabricates articles. Why: `lwagokas.org` is not live yet and the brief forbids simulated backend data.
 - Forms in this version submit through direct contact channels (tel, WhatsApp, mailto) built from `src/data/company.ts`. No submissions are stored. Why: the user chose direct contact only for this version.
-- Colors, shadows and radii come from the semantic tokens in `src/index.css`; components use token-based utilities only. Why: hardcoded color utilities break theming and the navy/gold/white charte.
+- Colors, shadows and radii come from the semantic tokens in `src/index.css`; components use token-based utilities only. Why: centralized palette roles let a brand refresh reach every page without hardcoded colors.
 - Each route sets its own SEO title and description via the `useSeo` hook. Why: per-page SEO is a brief requirement and the static `index.html` cannot cover every page.
 
 - Uploaded photo references live in `src/data/media.ts`; images do not establish operational status, authorizations, addresses or personal roles. Why: photos illustrate the company without turning assumptions into published facts.
