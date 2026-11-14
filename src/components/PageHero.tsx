@@ -1,7 +1,7 @@
 import { useI18n } from "@/i18n/LanguageProvider";
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { ChevronRight } from "lucide-react";
+
 import { cn } from "@/lib/utils";
 
 type Crumb = { label: string; to?: string };
@@ -32,7 +32,7 @@ export function PageHero({ eyebrow, title, lead, crumbs, children, className }: 
                 ) : (
                   <span className="text-gold-soft">{crumb.label}</span>
                 )}
-                {index < crumbs.length - 1 && <ChevronRight className="h-3 w-3" aria-hidden />}
+                {index < crumbs.length - 1 && <span className="material-icon text-[0.85rem]" aria-hidden>chevron_right</span>}
               </span>
             ))}
           </nav>

@@ -1,4 +1,4 @@
-import { Mail, MessageCircle, Phone } from "lucide-react";
+
 import { mailtoHref, primaryPhone, telHref, whatsappHref } from "@/data/company";
 import { useI18n } from "@/i18n/LanguageProvider";
 import { cn } from "@/lib/utils";
@@ -18,7 +18,7 @@ export function ContactChannels({ subject = "Contact LWA.GO.KAS", message, class
   return (
     <div className={cn("flex flex-wrap items-center gap-3", className)}>
       <a href={telHref(primaryPhone.dial)} className={cn("btn-navy", padding)}>
-        <Phone className="h-4 w-4" aria-hidden />
+        <span className="material-icon text-[1.1rem]" aria-hidden>call</span>
         {t("common.callUs")}
       </a>
       <a
@@ -27,11 +27,11 @@ export function ContactChannels({ subject = "Contact LWA.GO.KAS", message, class
         rel="noopener noreferrer"
         className={cn("btn-gold", padding)}
       >
-        <MessageCircle className="h-4 w-4" aria-hidden />
+        <span className="material-icon text-[1.1rem]" aria-hidden>chat</span>
         {t("common.whatsapp")}
       </a>
       <a href={mailtoHref(subject, message)} className={cn("btn-outline", padding)}>
-        <Mail className="h-4 w-4" aria-hidden />
+        <span className="material-icon text-[1.1rem]" aria-hidden>mail</span>
         {t("common.sendEmail")}
       </a>
     </div>

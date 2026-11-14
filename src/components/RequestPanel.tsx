@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { Mail, MessageCircle, Send } from "lucide-react";
+
 import { mailtoHref, whatsappHref } from "@/data/company";
 import { useI18n } from "@/i18n/LanguageProvider";
 import { cn } from "@/lib/utils";
@@ -99,7 +99,7 @@ export function RequestPanel({
           </pre>
           <div className="mt-4 flex flex-wrap gap-3">
             <a href={mailtoHref(subject, composed)} className="btn-navy px-4 py-2 text-[0.78rem]">
-              <Mail className="h-4 w-4" aria-hidden />
+              <span className="material-icon text-[1.1rem]" aria-hidden>mail</span>
               {t("common.sendEmail")}
             </a>
             <a
@@ -108,7 +108,7 @@ export function RequestPanel({
               rel="noopener noreferrer"
               className="btn-gold px-4 py-2 text-[0.78rem]"
             >
-              <MessageCircle className="h-4 w-4" aria-hidden />
+              <span className="material-icon text-[1.1rem]" aria-hidden>chat</span>
               {t("common.whatsapp")}
             </a>
             <Button variant="outline"
@@ -193,7 +193,7 @@ export function RequestPanel({
 
           <div className="sm:col-span-2">
             <Button variant="secondary" type="submit" className="btn-gold w-full sm:w-auto">
-              <Send className="h-4 w-4" aria-hidden />
+              <span className="material-icon text-[1.1rem]" aria-hidden>send</span>
               {submitLabel}
             </Button>
           </div>

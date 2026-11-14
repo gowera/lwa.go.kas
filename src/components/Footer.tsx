@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Phone } from "lucide-react";
 import { Logo } from "./Logo";
 import { sectors } from "@/data/sectors";
 import { navItems, socialIcons, values } from "@/data/site";
@@ -68,19 +67,19 @@ export function Footer() {
           <h3 className="text-[0.72rem] font-bold uppercase tracking-[0.18em] text-gold-soft">{t("footer.contact")}</h3>
           <ul className="mt-4 space-y-3 text-[0.85rem] text-navy-300">
             <li className="flex gap-2.5">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-soft" aria-hidden />
+              <span className="material-icon mt-0.5 shrink-0 text-[1.1rem] text-gold-soft" aria-hidden>location_on</span>
               <span>{fullAddress}</span>
             </li>
             {company.phones.map((phone) => (
               <li key={phone.dial} className="flex gap-2.5">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold-soft" aria-hidden />
+                <span className="material-icon mt-0.5 shrink-0 text-[1.1rem] text-gold-soft" aria-hidden>call</span>
                 <a href={telHref(phone.dial)} className="transition-colors hover:text-gold-soft">
                   {phone.display}
                 </a>
               </li>
             ))}
             <li className="flex gap-2.5">
-              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold-soft" aria-hidden />
+              <span className="material-icon mt-0.5 shrink-0 text-[1.1rem] text-gold-soft" aria-hidden>mail</span>
               <a href={mailtoHref("Contact LWA.GO.KAS")} className="break-all transition-colors hover:text-gold-soft">
                 {company.email}
               </a>
@@ -90,7 +89,7 @@ export function Footer() {
           <h3 className="mt-6 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-gold-soft">{t("footer.follow")}</h3>
           <ul className="mt-3 flex flex-wrap gap-2">
             {socials.map((social) => {
-              const Icon = socialIcons[social.id];
+              const iconName = socialIcons[social.id];
               const href = social.url ?? (social.id === "whatsapp" ? whatsappHref("Bonjour LWA.GO.KAS") : null);
               if (!href) {
                 return (
@@ -100,7 +99,7 @@ export function Footer() {
                       aria-label={`${social.label} — ${t("footer.followNote")}`}
                       className="flex h-9 w-9 items-center justify-center rounded-md border border-primary-foreground/15 bg-primary-foreground/5 text-navy-300"
                     >
-                      {Icon && <Icon className="h-4 w-4" aria-hidden />}
+                      {iconName && <span className="material-icon text-[1.1rem]" aria-hidden>{iconName}</span>}
                     </span>
                   </li>
                 );
@@ -114,7 +113,7 @@ export function Footer() {
                     aria-label={social.label}
                     className="flex h-9 w-9 items-center justify-center rounded-md border border-primary-foreground/15 bg-primary-foreground/5 text-navy-300 transition-colors hover:border-gold/50 hover:text-gold-soft"
                   >
-                    {Icon && <Icon className="h-4 w-4" aria-hidden />}
+                    {iconName && <span className="material-icon text-[1.1rem]" aria-hidden>{iconName}</span>}
                   </a>
                 </li>
               );

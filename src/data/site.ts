@@ -1,20 +1,4 @@
-import {
-  Award,
-  Eye,
-  Facebook,
-  HandHeart,
-  Heart,
-  Instagram,
-  Music2,
-  Scale,
-  Leaf,
-  ShieldCheck,
-  Twitter,
-  Users,
-  Youtube,
-  MessageCircle,
-  type LucideIcon,
-} from "lucide-react";
+// Icons are Google Material Symbols ligature names (see `.material-icon` in index.css).
 
 export const navItems = [
   { to: "/", key: "nav.home" },
@@ -27,21 +11,21 @@ export const navItems = [
 ];
 
 export const values = [
-  { id: "professionnalisme", icon: Award },
-  { id: "engagement", icon: HandHeart },
-  { id: "transparence", icon: Eye },
-  { id: "confiance", icon: ShieldCheck },
-  { id: "respect", icon: Users },
-  { id: "dignite", icon: Heart },
-  { id: "responsabilite", icon: Scale },
-  { id: "developpement-durable", icon: Leaf },
+  { id: "professionnalisme", icon: "workspace_premium" },
+  { id: "engagement", icon: "handshake" },
+  { id: "transparence", icon: "visibility" },
+  { id: "confiance", icon: "verified_user" },
+  { id: "respect", icon: "groups" },
+  { id: "dignite", icon: "favorite" },
+  { id: "responsabilite", icon: "balance" },
+  { id: "developpement-durable", icon: "eco" },
 ] as const;
 
-export const socialIcons: Record<string, LucideIcon> = {
-  facebook: Facebook,
-  instagram: Instagram,
-  tiktok: Music2,
-  youtube: Youtube,
-  x: Twitter,
-  whatsapp: MessageCircle,
+export const socialIcons: Record<string, string> = {
+  facebook: "thumb_up",
+  instagram: "photo_camera",
+  tiktok: "music_note",
+  youtube: "play_circle",
+  x: "alternate_email",
+  whatsapp: "chat",
 };

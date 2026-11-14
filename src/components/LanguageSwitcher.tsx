@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Globe } from "lucide-react";
+
 import { LOCALES, useI18n, type Locale } from "@/i18n/LanguageProvider";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
@@ -47,9 +47,9 @@ export function LanguageSwitcher({ tone = "light", className }: LanguageSwitcher
             : "border-line text-primary hover:bg-navy-100/60",
         )}
       >
-        <Globe className="h-3.5 w-3.5" aria-hidden />
+        <span className="material-icon text-[1rem]" aria-hidden>language</span>
         {current.short}
-        <ChevronDown className={cn("h-3 w-3 transition-transform", open && "rotate-180")} aria-hidden />
+        <span className={cn("material-icon text-[1rem] transition-transform", open && "rotate-180")} aria-hidden>expand_more</span>
       </Button>
       {open && (
         <ul

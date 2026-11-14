@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { MapPin, Menu, Phone, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { Logo } from "./Logo";
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -43,7 +42,7 @@ export function Header() {
       <div className="bg-primary text-primary-foreground">
         <div className="container-page flex h-9 items-center justify-between gap-4 text-[0.72rem]">
           <span className="flex min-w-0 items-center gap-2 text-navy-300">
-            <MapPin className="h-3.5 w-3.5 shrink-0 text-gold-soft" aria-hidden />
+            <span className="material-icon shrink-0 text-[1rem] text-gold-soft" aria-hidden>location_on</span>
             <span className="truncate">
               {company.headquarters.city}, {company.headquarters.province} — {company.headquarters.country}
             </span>
@@ -53,7 +52,7 @@ export function Header() {
               href={telHref(primaryPhone.dial)}
               className="hidden items-center gap-1.5 font-semibold text-primary-foreground hover:text-gold-soft sm:flex"
             >
-              <Phone className="h-3.5 w-3.5 text-gold-soft" aria-hidden />
+              <span className="material-icon text-[1rem] text-gold-soft" aria-hidden>call</span>
               {primaryPhone.display}
             </a>
             <LanguageSwitcher tone="dark" />
@@ -87,7 +86,7 @@ export function Header() {
               aria-label={menuOpen ? t("nav.close") : t("nav.menu")}
               className="flex h-10 w-10 items-center justify-center rounded-md border border-line text-primary transition-colors hover:bg-navy-100/60 lg:hidden"
             >
-              {menuOpen ? <X className="h-5 w-5" aria-hidden /> : <Menu className="h-5 w-5" aria-hidden />}
+              <span className="material-icon text-[1.4rem]" aria-hidden>{menuOpen ? "close" : "menu"}</span>
             </Button>
           </div>
         </div>

@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Manrope", "system-ui", "sans-serif"],
-        body: ["Manrope", "system-ui", "sans-serif"],
+        display: ["'Lexend Deca'", "system-ui", "sans-serif"],
+        body: ["'Lexend Deca'", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
