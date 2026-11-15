@@ -19,6 +19,8 @@ export type Location = {
   phone: string | null;
   email: string | null;
   hours: string | null;
+  withdrawalHours: { days: "weekdays" | "saturday"; open: string; close: string; note?: string }[];
+  sites: { name: string; address: string | null; status: Status }[];
   services: string[];
   mapQuery: string | null;
 };
@@ -36,6 +38,21 @@ export const locations: Location[] = [
     phone: "+243 991 426 986",
     email: "Lwagokas6@gmail.com",
     hours: null,
+    withdrawalHours: [
+      { days: "weekdays", open: "09:00", close: "15:30" },
+      { days: "saturday", open: "09:00", close: "12:00" },
+    ],
+    sites: [
+      { name: "Kalumba", address: "Chez Kalumba, à la pharmacie de Nzevere", status: "actif" },
+      { name: "Nziapanda", address: "Dans le parking de bennes", status: "actif" },
+      { name: "Centre-ville", address: "Avenue du Centre, 4e parcelle en quittant l’église CBKA du centre vers le bureau de Jenti Kaliki", status: "actif" },
+      { name: "Mutiri", address: "Route Kyavuhiri, 4e parcelle en quittant chez Lipumbu, face au lavage, bâtiment Kahangiro", status: "actif" },
+      { name: "Vuhira 4 km", address: "Dans le parking de bennes", status: "actif" },
+      { name: "Rughenda", address: "Près du marché", status: "actif" },
+      { name: "Nduko", address: "Dans la montée allant vers Musimba", status: "actif" },
+      { name: "Kyaghala", address: "Dans la montée allant vers le rond-point Kyaghala", status: "actif" },
+      { name: "KATARASI", address: "Vutsundo", status: "actif" },
+    ],
     services: [],
     mapQuery: "Kalemire, Bulengera, Butembo, Nord-Kivu, RDC",
   },
@@ -43,14 +60,24 @@ export const locations: Location[] = [
     slug: "beni",
     city: "Beni",
     province: "Nord-Kivu",
-    type: "zone de développement",
-    status: "en developpement",
+    type: "agence active",
+    status: "actif",
     presentation:
-      "Beni est une zone de développement pour LWA.GO.KAS. Les activités qui y seront proposées et les modalités de présence y sont en cours de préparation.",
+      "LWA.GO.KAS dispose de plusieurs sites à Beni, dont le nouveau site de Mangote. Les horaires de retrait sont indiqués ci-dessous.",
     address: null,
     phone: null,
     email: null,
     hours: null,
+    withdrawalHours: [
+      { days: "weekdays", open: "09:00", close: "15:30" },
+      { days: "saturday", open: "10:00", close: "13:00", note: "Suite au salongo de Beni" },
+    ],
+    sites: [
+      { name: "Cité Belge", address: "Route Ndindi, face à l’église Cité de refuge de Jules Mulindwa", status: "actif" },
+      { name: "Tamende", address: "Rond-point Germanton", status: "actif" },
+      { name: "Campagne", address: "Près du rond-point Katoto", status: "actif" },
+      { name: "MANGOTE", address: null, status: "actif" },
+    ],
     services: [],
     mapQuery: null,
   },
@@ -58,14 +85,16 @@ export const locations: Location[] = [
     slug: "goma",
     city: "Goma",
     province: "Nord-Kivu",
-    type: "zone de développement",
-    status: "en developpement",
+    type: "agence active",
+    status: "actif",
     presentation:
-      "Goma est une zone de développement pour LWA.GO.KAS. Aucune agence n'y est présentée comme ouverte tant que les conditions d'exploitation ne sont pas confirmées.",
-    address: null,
-    phone: null,
+      "Le site LWA.GO.KAS de Goma se situe dans la commune de Karisimbi, à Mabanga Nord, Osso 2, N° 153. Il est ouvert tous les jours.",
+    address: "Karisimbi, Mabanga Nord, Osso 2, N° 153",
+    phone: "+243 978 292 674",
     email: null,
-    hours: null,
+    hours: "08h00–19h00 · 7 jours sur 7",
+    withdrawalHours: [],
+    sites: [],
     services: [],
     mapQuery: null,
   },
@@ -73,14 +102,16 @@ export const locations: Location[] = [
     slug: "lubumbashi",
     city: "Lubumbashi",
     province: "Haut-Katanga",
-    type: "zone de développement",
+    type: "représentation",
     status: "en developpement",
     presentation:
-      "Lubumbashi est une zone de développement pour LWA.GO.KAS, tournée vers les activités économiques et les partenariats du sud du pays.",
-    address: null,
+      "Le document de l’entreprise situe son siège secondaire à Lubumbashi, dans la commune de Rwashi, au quartier du Congo. Les horaires et les services disponibles restent à confirmer.",
+    address: "Commune Rwashi, quartier du Congo",
     phone: null,
     email: null,
     hours: null,
+    withdrawalHours: [],
+    sites: [],
     services: [],
     mapQuery: null,
   },

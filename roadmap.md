@@ -9,6 +9,8 @@ Source brief: `user-uploads://1._RÔLE_ET_OBJECTIF_Agis_comme_une_équipe_pasted
 - Forms: direct contact only (tel, WhatsApp, email). Nothing stored.
 
 ## Tasks
+- [x] Complete confirmed location addresses, guichets and hours; test supplied values
+- [x] Move displayed images to public and verify real image loading across pages
 - [x] Replace home opening photograph with the newly supplied group image
 - [x] Restyle all pages in bright yellow, black and white, inspired by cabinet-amk.vercel.app
 - [x] Remove generic decorative elements

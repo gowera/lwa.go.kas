@@ -93,9 +93,9 @@ export const en: Dict = {
   "values.developpement-durable.text": "Activities useful today without compromising tomorrow.",
 
   "home.locationsEyebrow": "Our locations",
-  "home.locationsTitle": "Headquartered in Butembo; Beni, Goma and Lubumbashi are development zones",
+  "home.locationsTitle": "Nos sites à Butembo, Beni, Goma et Lubumbashi",
   "home.locationsLead":
-    "The headquarters are in Butembo. The other cities are development zones: they are not presented as open offices.",
+    "Retrouvez les coordonnées et horaires confirmés de nos implantations. Les services disponibles sont précisés séparément.",
 
   "home.partnersTitle": "Let us build lasting partnerships together.",
   "home.partnersLead":

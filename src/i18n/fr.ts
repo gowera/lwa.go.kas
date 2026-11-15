@@ -99,9 +99,9 @@ export const fr: Dict = {
 
   // Home — locations
   "home.locationsEyebrow": "Nos implantations",
-  "home.locationsTitle": "Présents à Butembo, en développement à Beni, Goma et Lubumbashi",
+  "home.locationsTitle": "Nos sites à Butembo, Beni, Goma et Lubumbashi",
   "home.locationsLead":
-    "Le siège social est établi à Butembo. Les autres villes sont des zones de développement : elles ne sont pas présentées comme des agences ouvertes.",
+    "Retrouvez les coordonnées et horaires confirmés de nos implantations. Les services disponibles sont précisés séparément.",
 
   // Home — partnerships
   "home.partnersTitle": "Construisons ensemble des partenariats durables.",

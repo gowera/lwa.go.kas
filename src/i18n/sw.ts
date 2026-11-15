@@ -93,9 +93,9 @@ export const sw: Dict = {
   "values.developpement-durable.text": "Shughuli zinazofaa leo bila kuhatarisha kesho.",
 
   "home.locationsEyebrow": "Maeneo yetu",
-  "home.locationsTitle": "Makao makuu Butembo; Beni, Goma na Lubumbashi ni maeneo ya maendeleo",
+  "home.locationsTitle": "Nos sites à Butembo, Beni, Goma et Lubumbashi",
   "home.locationsLead":
-    "Makao makuu yapo Butembo. Migni mingine ni maeneo ya maendeleo: haioneshwi kama ofisi zilizofunguliwa.",
+    "Retrouvez les coordonnées et horaires confirmés de nos implantations. Les services disponibles sont précisés séparément.",
 
   "home.partnersTitle": "Tujenge ushirikiano endelevu pamoja.",
   "home.partnersLead":

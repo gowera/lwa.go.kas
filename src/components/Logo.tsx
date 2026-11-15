@@ -1,4 +1,4 @@
-import logoAsset from "@/assets/embleme.webp.asset.json";
+import { media } from "@/data/media";
 import { company } from "@/data/company";
 import { useI18n } from "@/i18n/LanguageProvider";
 import { cn } from "@/lib/utils";
@@ -33,7 +33,7 @@ export function Logo({
         style={{ width: size, height: size }}
       >
         <img
-          src={logoAsset.url}
+          src={media.logo}
           alt={t("media.logo")}
           width={size}
           height={size}
