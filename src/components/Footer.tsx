@@ -91,19 +91,7 @@ export function Footer() {
             {socials.map((social) => {
               const iconName = socialIcons[social.id];
               const href = social.url ?? (social.id === "whatsapp" ? whatsappHref("Bonjour LWA.GO.KAS") : null);
-              if (!href) {
-                return (
-                  <li key={social.id}>
-                    <span
-                      title={`${social.label} — ${t("footer.followNote")}`}
-                      aria-label={`${social.label} — ${t("footer.followNote")}`}
-                      className="flex h-9 w-9 items-center justify-center rounded-md border border-primary-foreground/15 bg-primary-foreground/5 text-navy-300"
-                    >
-                      {iconName && <span className="material-icon text-[1.1rem]" aria-hidden>{iconName}</span>}
-                    </span>
-                  </li>
-                );
-              }
+              if (!href) return null;
               return (
                 <li key={social.id}>
                   <a
@@ -119,7 +107,6 @@ export function Footer() {
               );
             })}
           </ul>
-          <p className="mt-3 text-[0.72rem] text-navy-300/80">{t("footer.followNote")}</p>
         </div>
       </div>
 
