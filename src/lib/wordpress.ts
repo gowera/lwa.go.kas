@@ -70,6 +70,47 @@ export async function fetchPosts(perPage = 9): Promise<WpPost[]> {
   }
 }
 
+export type WpDocument = {
+  id: number;
+  title: string;
+  url: string;
+  date: string;
+  size: number | null;
+};
+
+/**
+ * PDF files published in the WordPress media library.
+ * Returns [] while WordPress is not configured, so the documents page shows an
+ * honest empty state instead of inventing files.
+ */
+export async function fetchDocuments(perPage = 30): Promise<WpDocument[]> {
+  if (!wordpressEnabled) return [];
+  try {
+    const data = await getJson(
+      `${WP_URL}/wp-json/wp/v2/media?mime_type=application%2Fpdf&orderby=date&order=desc&per_page=${perPage}`,
+    );
+    if (!Array.isArray(data)) return [];
+    return data
+      .map((raw) => {
+        const item = raw as Record<string, unknown>;
+        const details = (item.media_details ?? {}) as Record<string, unknown>;
+        const size = Number(details.filesize ?? details.size);
+        const source = asString(item.source_url);
+        const fileName = decodeURIComponent(source.split("/").pop() ?? "");
+        return {
+          id: Number(item.id ?? 0),
+          title: asString(item.title).replace(/<[^>]+>/g, "").trim() || fileName,
+          url: source,
+          date: asString(item.date),
+          size: Number.isFinite(size) && size > 0 ? size : null,
+        } satisfies WpDocument;
+      })
+      .filter((document) => document.url.length > 0);
+  } catch {
+    return [];
+  }
+}
+
 export type WpSubmission = {
   type: "partenariat" | "contact";
   fields: Record<string, string>;
