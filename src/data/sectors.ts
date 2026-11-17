@@ -10,6 +10,8 @@ export type Service = {
   name: string;
   status: Status;
   description: string;
+  /** Cities where the company confirmed the service is available. */
+  cities?: string[];
 };
 
 export type Sector = {
@@ -92,8 +94,9 @@ export const sectors: Sector[] = [
       "Chaque prestation fait l'objet d'une évaluation préalable du site et d'une proposition définissant le dispositif, les horaires et les responsabilités de chaque partie.",
     services: [
       {
-        name: "Gardiennage",
-        status: "en developpement",
+        name: "Gardiennage — LWA.GO.KAS SECURITY",
+        status: "actif",
+        cities: ["Butembo"],
         description: "Postes de garde fixes et mobiles pour les sites, les entreprises et les résidences.",
       },
       {
@@ -150,24 +153,38 @@ export const sectors: Sector[] = [
         description: "Structure d'accueil, de consultation et d'hospitalisation.",
       },
       {
-        name: "New Hope in Life Pharmacy",
-        status: "en developpement",
+        name: "Pharmacie New Hope in Life",
+        status: "actif",
+        cities: ["Goma"],
         description: "Officine pharmaceutique de proximité.",
       },
       {
-        name: "Laboratoire",
-        status: "en developpement",
-        description: "Analyses médicales et examens de diagnostic.",
+        name: "Laboratoire d'analyses biomédicales",
+        status: "actif",
+        cities: ["Goma"],
+        description: "Analyses biomédicales et examens de diagnostic.",
       },
       {
-        name: "Ambulance",
-        status: "en developpement",
-        description: "Évacuation et transport sanitaire.",
+        name: "Service d'ambulance",
+        status: "actif",
+        cities: ["Butembo"],
+        description: "Évacuation sanitaire des patients.",
+      },
+      {
+        name: "Transport médical",
+        status: "actif",
+        cities: ["Butembo"],
+        description: "Transport des patients vers les structures de soins.",
       },
       {
         name: "Transport funéraire",
         status: "en developpement",
         description: "Accompagnement logistique et funéraire des familles.",
+      },
+      {
+        name: "Bons de soins",
+        status: "en developpement",
+        description: "Bons permettant de prendre en charge des soins auprès des structures LWA.GO.KAS.",
       },
     ],
   },
@@ -206,9 +223,19 @@ export const sectors: Sector[] = [
         description: "Transformation des produits agricoles et locaux.",
       },
       {
-        name: "Formation professionnelle",
-        status: "en developpement",
-        description: "Programmes de formation aux métiers porteurs.",
+        name: "Formation professionnelle et emploi",
+        status: "actif",
+        description: "Formation aux métiers porteurs et accompagnement vers l'emploi.",
+      },
+      {
+        name: "Salon de coiffure",
+        status: "actif",
+        description: "Services de coiffure.",
+      },
+      {
+        name: "Secrétariat public",
+        status: "actif",
+        description: "Saisie, impression et travaux de secrétariat pour le public.",
       },
       {
         name: "Investissements et projets",

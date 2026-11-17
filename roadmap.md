@@ -9,6 +9,9 @@ Source brief: `user-uploads://1._RÔLE_ET_OBJECTIF_Agis_comme_une_équipe_pasted
 - Forms: direct contact only (tel, WhatsApp, email). Nothing stored.
 
 ## Tasks
+- [x] Cahier des recommandations: active services (health Goma/Butembo, security Butembo, development), care vouchers listed, sector photos
+- [x] Butembo photo moved to the locations page banner
+- [ ] Company presentation PDF download button: waiting for the PDF from the company
 - [x] Complete confirmed location addresses, guichets and hours; test supplied values
 - [x] Move displayed images to public and verify real image loading across pages
 - [x] Replace home opening photograph with the newly supplied group image

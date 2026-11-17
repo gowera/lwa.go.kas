@@ -13,14 +13,20 @@ type PageHeroProps = {
   crumbs?: Crumb[];
   children?: ReactNode;
   className?: string;
+  image?: string;
+  imageAlt?: string;
 };
 
 /** Shared opening band for interior pages. */
-export function PageHero({ eyebrow, title, lead, crumbs, children, className }: PageHeroProps) {
+export function PageHero({ eyebrow, title, lead, crumbs, children, className, image, imageAlt }: PageHeroProps) {
   const { t } = useI18n();
   return (
     <section className={cn("relative overflow-hidden bg-navy-gradient text-primary-foreground", className)}>
-      <div className="container-page relative py-14 sm:py-16">
+      {image && <>
+        <img src={image} alt={imageAlt ?? ""} className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-foreground/60" aria-hidden />
+      </>}
+      <div className={cn("container-page relative py-14 sm:py-16", image && "py-20 sm:py-28 [text-shadow:0_2px_10px_hsl(var(--foreground)/0.6)]")}>
         {crumbs && crumbs.length > 0 && (
           <nav aria-label={t("common.breadcrumb")} className="mb-5 flex flex-wrap items-center gap-1.5 text-[0.75rem] text-navy-300">
             {crumbs.map((crumb, index) => (
