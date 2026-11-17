@@ -225,6 +225,20 @@ export const en: Dict = {
   "privacy.cookiesTitle": "Cookies",
   "privacy.updatesTitle": "Changes to this policy",
 
+  "nav.documents": "Documents",
+  "documents.title": "Documents and downloads",
+  "documents.lead": "Documents published by LWA.GO.KAS: company presentation, brochures and official materials.",
+  "documents.download": "Download",
+  "documents.loading": "Loading documents…",
+  "documents.emptyTitle": "No document published yet",
+  "documents.emptyText":
+    "Presentation documents will be published on the company's official website. They will appear here automatically, with their publication date.",
+  "documents.note": "Files are published from lwagokas.org, the company's official website.",
+  "documents.cta": "View all documents",
+  "home.documentsEyebrow": "Publications",
+  "home.documentsTitle": "Documents and downloads",
+  "home.documentsLead": "The company presentation and official materials will be published here once available.",
+
   "footer.about": "A multisectoral company based in Butembo, serving economic and social development.",
   "footer.quickLinks": "Quick links",
   "footer.sectors": "Our sectors",

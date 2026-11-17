@@ -74,7 +74,6 @@ export type WpSubmission = {
   type: "partenariat" | "contact";
   fields: Record<string, string>;
 };
-
 /**
  * Partnership and contact submissions target WordPress once it is configured.
  * While it is unavailable the call reports `not-configured` rather than

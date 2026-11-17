@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
-import { About, Contact, Gallery, NotFound, SectorDetail, Locations, Partners, Careers, News, Legal } from "./pages/PortalPages";
+import { About, Contact, Gallery, NotFound, SectorDetail, Locations, Partners, Careers, News, Legal, Documents } from "./pages/PortalPages";
 import { Layout } from "./components/Layout";
 import { LanguageProvider } from "./i18n/LanguageProvider";
 
@@ -29,6 +29,7 @@ const App = () => (
           <Route path="/partenariats" element={<Partners />} />
           <Route path="/carrieres" element={<Careers />} />
           <Route path="/actualites" element={<News />} />
+          <Route path="/documents" element={<Documents />} />
           <Route path="/mentions-legales" element={<Legal />} />
           <Route path="/confidentialite" element={<Legal privacy />} />
           <Route path="/politique-de-confidentialite" element={<Legal privacy />} />

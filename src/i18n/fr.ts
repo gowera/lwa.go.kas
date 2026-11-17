@@ -332,6 +332,23 @@ export const fr: Dict = {
   "privacy.updatesText":
     "Cette politique peut être mise à jour. Sa date de dernière modification figure en haut de la page.",
 
+  // Documents et téléchargements
+  "nav.documents": "Documents",
+  "documents.title": "Documents et téléchargements",
+  "documents.lead":
+    "Les documents publiés par LWA.GO.KAS : présentation de l'entreprise, brochures et supports officiels.",
+  "documents.download": "Télécharger",
+  "documents.loading": "Chargement des documents…",
+  "documents.emptyTitle": "Aucun document publié pour le moment",
+  "documents.emptyText":
+    "Les documents de présentation seront mis en ligne sur le site officiel de l'entreprise. Ils apparaîtront ici automatiquement, avec leur date de publication.",
+  "documents.note": "Les fichiers sont publiés depuis lwagokas.org, le site officiel de l'entreprise.",
+  "documents.cta": "Voir tous les documents",
+  "home.documentsEyebrow": "Publications",
+  "home.documentsTitle": "Documents et téléchargements",
+  "home.documentsLead":
+    "La présentation de l'entreprise et les supports officiels seront publiés ici dès leur mise en ligne.",
+
   // Footer
   "footer.about": "Entreprise multisectorielle basée à Butembo, au service du développement économique et social.",
   "footer.quickLinks": "Liens rapides",

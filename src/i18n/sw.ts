@@ -226,6 +226,20 @@ export const sw: Dict = {
   "privacy.cookiesTitle": "Vidakuzi",
   "privacy.updatesTitle": "Mabadiliko ya sera",
 
+  "nav.documents": "Nyaraka",
+  "documents.title": "Nyaraka na upakuaji",
+  "documents.lead": "Nyaraka zilizochapishwa na LWA.GO.KAS: utangulizi wa kampuni, mabroshala na nyaraka rasmi.",
+  "documents.download": "Pakua",
+  "documents.loading": "Inapakia nyaraka…",
+  "documents.emptyTitle": "Hakuna nyaraka iliyochapishwa kwa sasa",
+  "documents.emptyText":
+    "Nyaraka za utangulizi zitachapishwa kwenye tovuti rasmi ya kampuni. Zitaonekana hapa zikiwa tayari, tarehe yake ya kuchapishwa ikiwa imeelezwa.",
+  "documents.note": "Faili huchapishwa kutoka lwagokas.org, tovuti rasmi ya kampuni.",
+  "documents.cta": "Tazama nyaraka zote",
+  "home.documentsEyebrow": "Chapisho",
+  "home.documentsTitle": "Nyaraka na upakuaji",
+  "home.documentsLead": "Utangulizi wa kampuni na nyaraka rasmi zitachapishwa hapa zikiwa tayari.",
+
   "footer.about": "Kampuni ya sekta nyingi yenye makao Butembo, katika huduma ya maendeleo ya kiuchumi na kijamii.",
   "footer.quickLinks": "Viungo vya haraka",
   "footer.sectors": "Sekta zetu",

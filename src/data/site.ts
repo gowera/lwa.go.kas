@@ -8,6 +8,7 @@ export const navItems = [
   { to: "/partenariats", key: "nav.partners" },
   { to: "/carrieres", key: "nav.careers" },
   { to: "/actualites", key: "nav.news" },
+  { to: "/documents", key: "nav.documents" },
 ];
 
 export const values = [
