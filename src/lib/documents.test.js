@@ -1,4 +1,5 @@
-import { test, expect, file } from 'bun:test';
+import { test, expect } from 'bun:test';
+import { file } from 'bun';
 import { fetchDocuments, wordpressEnabled } from './wordpress';
 
 test('No document is invented while WordPress is not configured', async () => {

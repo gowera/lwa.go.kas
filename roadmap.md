@@ -11,7 +11,7 @@ Source brief: `user-uploads://1._RÔLE_ET_OBJECTIF_Agis_comme_une_équipe_pasted
 ## Tasks
 - [x] Cahier des recommandations: active services (health Goma/Butembo, security Butembo, development), care vouchers listed, sector photos
 - [x] Butembo photo moved to the locations page banner
-- [ ] Company presentation PDF download button: waiting for the PDF from the company
+- [x] Documents page and home section ready for PDFs published in the WordPress media library; empty until WordPress is configured
 - [x] Complete confirmed location addresses, guichets and hours; test supplied values
 - [x] Move displayed images to public and verify real image loading across pages
 - [x] Replace home opening photograph with the newly supplied group image
