@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Logo } from "./Logo";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { TranslationNotice } from "./TranslationNotice";
 import { navItems } from "@/data/site";
 import { company, primaryPhone, telHref } from "@/data/company";
 import { useI18n } from "@/i18n/LanguageProvider";
@@ -36,10 +35,8 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40">
-      <TranslationNotice />
-
       {/* Utility row */}
-      <div className="bg-primary text-primary-foreground">
+      <div className={cn("overflow-hidden bg-primary text-primary-foreground transition-[max-height] duration-300", scrolled ? "max-h-0" : "max-h-9")} aria-hidden={scrolled || undefined}>
         <div className="container-page flex h-9 items-center justify-between gap-4 text-[0.72rem]">
           <span className="hidden min-w-0 items-center gap-2 text-navy-300 sm:flex">
             <span className="material-icon shrink-0 text-[1rem] text-gold-soft" aria-hidden>location_on</span>
@@ -47,7 +44,7 @@ export function Header() {
               {company.headquarters.city}, {company.headquarters.province} — {company.headquarters.country}
             </span>
           </span>
-          <span className="flex items-center gap-4">
+          <span className="flex w-full items-center justify-between gap-4 sm:w-auto sm:justify-end">
             <a
               href={telHref(primaryPhone.dial)}
               className="flex items-center gap-1.5 whitespace-nowrap font-semibold text-primary-foreground hover:text-gold-soft"
