@@ -36,7 +36,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40">
       {/* Utility row */}
-      <div className={cn("overflow-hidden bg-primary text-primary-foreground transition-[max-height] duration-300", scrolled ? "max-h-0" : "max-h-9")} aria-hidden={scrolled || undefined}>
+      <div className={cn("bg-primary text-primary-foreground transition-[max-height] duration-300", scrolled ? "max-h-0 overflow-hidden" : "max-h-9 overflow-visible")} aria-hidden={scrolled || undefined}>
         <div className="container-page flex h-9 items-center justify-between gap-4 text-[0.72rem]">
           <span className="hidden min-w-0 items-center gap-2 text-navy-300 sm:flex">
             <span className="material-icon shrink-0 text-[1rem] text-gold-soft" aria-hidden>location_on</span>
