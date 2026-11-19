@@ -1,11 +1,43 @@
 
+import { useEffect, useState } from "react";
 import { whatsappHref } from "@/data/company";
 import { useI18n } from "@/i18n/LanguageProvider";
 
-/** Always-visible WhatsApp entry point, the most used channel in the region. */
+/** WhatsApp entry point that leaves the footer clear at the very bottom. */
 export function WhatsAppFloat() {
   const { t } = useI18n();
+  const [visible, setVisible] = useState(true);
   const href = whatsappHref("Bonjour LWA.GO.KAS, je souhaite des informations.");
+
+  useEffect(() => {
+    let previousY = window.scrollY;
+
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const hasScrollableContent = scrollHeight > window.innerHeight;
+      const atBottom = hasScrollableContent && Math.ceil(currentY + window.innerHeight) >= scrollHeight;
+
+      if (atBottom) {
+        setVisible(false);
+      } else if (currentY < previousY) {
+        setVisible(true);
+      }
+
+      previousY = currentY;
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
+  if (!visible) return null;
+
   return (
     <a
       href={href}

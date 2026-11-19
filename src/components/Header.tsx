@@ -41,7 +41,7 @@ export function Header() {
       {/* Utility row */}
       <div className="bg-primary text-primary-foreground">
         <div className="container-page flex h-9 items-center justify-between gap-4 text-[0.72rem]">
-          <span className="flex min-w-0 items-center gap-2 text-navy-300">
+          <span className="hidden min-w-0 items-center gap-2 text-navy-300 sm:flex">
             <span className="material-icon shrink-0 text-[1rem] text-gold-soft" aria-hidden>location_on</span>
             <span className="truncate">
               {company.headquarters.city}, {company.headquarters.province} — {company.headquarters.country}
@@ -50,7 +50,7 @@ export function Header() {
           <span className="flex items-center gap-4">
             <a
               href={telHref(primaryPhone.dial)}
-              className="hidden items-center gap-1.5 font-semibold text-primary-foreground hover:text-gold-soft sm:flex"
+              className="flex items-center gap-1.5 whitespace-nowrap font-semibold text-primary-foreground hover:text-gold-soft"
             >
               <span className="material-icon text-[1rem] text-gold-soft" aria-hidden>call</span>
               {primaryPhone.display}

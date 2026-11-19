@@ -9,6 +9,7 @@ Source brief: `user-uploads://1._RÔLE_ET_OBJECTIF_Agis_comme_une_équipe_pasted
 - Forms: direct contact only (tel, WhatsApp, email). Nothing stored.
 
 ## Tasks
+- [x] Mobile: show the phone number in the top bar and hide the floating WhatsApp button at the page bottom until scrolling up
 - [x] Cahier des recommandations: active services (health Goma/Butembo, security Butembo, development), care vouchers listed, sector photos
 - [x] Butembo photo moved to the locations page banner
 - [x] Documents page and home section ready for PDFs published in the WordPress media library; empty until WordPress is configured
