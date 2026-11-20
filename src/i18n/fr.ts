@@ -115,7 +115,7 @@ export const fr: Dict = {
   "home.newsLead": "Annonces, ouvertures de services et temps forts de LWA.GO.KAS.",
   "home.newsEmpty": "Aucune actualité publiée pour le moment.",
   "home.newsEmptyNote":
-    "Les articles seront diffusés depuis le site lwagokas.org dès que celui-ci sera en ligne. Aucun article n'est publié avant sa mise en ligne réelle.",
+    "Les actualités sont récupérées depuis l'API REST de lwagokas.com. Aucun contenu n'est inventé.",
 
   // Home — final CTA
   "home.ctaTitle": "Vous avez un projet ou souhaitez collaborer avec nous ?",
@@ -220,7 +220,7 @@ export const fr: Dict = {
     "Les pièces jointes ne peuvent pas être envoyées par ce canal : joignez-les à votre e-mail ou à votre message WhatsApp.",
   "partners.submit": "Envoyer la demande",
   "partners.submitText":
-    "Votre demande est préparée puis transmise par e-mail ou par WhatsApp. Elle sera enregistrée dans l'administration du site lwagokas.org dès que celui-ci sera disponible.",
+    "Votre demande est préparée puis transmise par e-mail ou par WhatsApp. Elle sera enregistrée dans l'administration du site lwagokas.com dès que celui-ci sera disponible.",
   "partners.submitTitle": "Votre demande est prête à être envoyée",
   "partners.submitText2": "Choisissez le canal qui vous convient : les informations sont déjà saisies.",
 
@@ -254,7 +254,7 @@ export const fr: Dict = {
   "news.lead": "Annonces, ouvertures de services et temps forts de LWA.GO.KAS.",
   "news.empty": "Aucune actualité n'est publiée pour le moment.",
   "news.emptyNote":
-    "Les articles proviendront du site lwagokas.org. La connexion est déjà préparée dans le site : elle s'activera dès la mise en ligne de lwagokas.org.",
+    "Les articles affichés proviennent de l'API REST de lwagokas.com.",
   "news.category": "Catégorie",
   "news.author": "Auteur",
   "news.publishedOn": "Publié le",
@@ -277,7 +277,7 @@ export const fr: Dict = {
   "contact.form.message": "Message",
   "contact.submit": "Envoyer le message",
   "contact.submitText":
-    "Votre message est préparé avec les informations saisies, puis transmis par e-mail ou par WhatsApp. Il sera enregistré dans l'administration du site lwagokas.org dès que celui-ci sera disponible.",
+    "Votre message est préparé avec les informations saisies, puis transmis par e-mail ou par WhatsApp. Il sera enregistré dans l'administration du site lwagokas.com dès que celui-ci sera disponible.",
   "contact.channelsTitle": "Nous joindre directement",
   "contact.channelsText": "Appelez-nous, écrivez-nous sur WhatsApp ou envoyez-nous un e-mail.",
   "contact.sentTitle": "Votre message est prêt à être envoyé",
@@ -341,8 +341,8 @@ export const fr: Dict = {
   "documents.loading": "Chargement des documents…",
   "documents.emptyTitle": "Aucun document publié pour le moment",
   "documents.emptyText":
-    "Les documents de présentation seront mis en ligne sur le site officiel de l'entreprise. Ils apparaîtront ici automatiquement, avec leur date de publication.",
-  "documents.note": "Les fichiers sont publiés depuis lwagokas.org, le site officiel de l'entreprise.",
+    "Les articles de la catégorie « Documents, rapports » apparaîtront ici dès leur publication.",
+  "documents.note": "Cette page affiche uniquement les articles de la catégorie « Documents, rapports » de lwagokas.com.",
   "documents.cta": "Voir tous les documents",
   "home.documentsEyebrow": "Publications",
   "home.documentsTitle": "Documents et téléchargements",

@@ -107,7 +107,7 @@ export const sw: Dict = {
   "home.newsLead": "Matangazo, ufunguzi wa huduma na matukio muhimu ya LWA.GO.KAS.",
   "home.newsEmpty": "Hakuna habari iliyochapishwa kwa sasa.",
   "home.newsEmptyNote":
-    "Makala yatapatikana kutoka tovuti lwagokas.org itakapokuwa tayari. Hakuna makala yanayochapishwa kabla ya kuwepo kwake halisi.",
+    "Habari zinapatikana kupitia API ya REST ya lwagokas.com. Hakuna maudhui yanayotungwa.",
 
   "home.ctaTitle": "Una mradi au unataka kushirikiana nasi?",
   "home.ctaText": "Timu yetu iko tayari kuchunguza mahitaji yako na kutafuta njia za ushirikiano.",
@@ -233,8 +233,8 @@ export const sw: Dict = {
   "documents.loading": "Inapakia nyaraka…",
   "documents.emptyTitle": "Hakuna nyaraka iliyochapishwa kwa sasa",
   "documents.emptyText":
-    "Nyaraka za utangulizi zitachapishwa kwenye tovuti rasmi ya kampuni. Zitaonekana hapa zikiwa tayari, tarehe yake ya kuchapishwa ikiwa imeelezwa.",
-  "documents.note": "Faili huchapishwa kutoka lwagokas.org, tovuti rasmi ya kampuni.",
+    "Makala katika kategoria ya “Documents, rapports” zitaonekana hapa zitakapochapishwa.",
+  "documents.note": "Ukurasa huu unaonyesha makala za kategoria ya “Documents, rapports” pekee kutoka lwagokas.com.",
   "documents.cta": "Tazama nyaraka zote",
   "home.documentsEyebrow": "Chapisho",
   "home.documentsTitle": "Nyaraka na upakuaji",

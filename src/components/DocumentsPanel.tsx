@@ -3,42 +3,38 @@ import { Link } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
 import { useI18n } from "@/i18n/LanguageProvider";
-import { fetchDocuments, type WpDocument } from "@/lib/wordpress";
+import { fetchPosts, isDocumentPost, type WpPost } from "@/lib/wordpress";
 import { cn } from "@/lib/utils";
 
-/** Documents published through WordPress, shared by the home band and the page. */
+/** WordPress posts in the dedicated documents category, shared by home and page. */
 export function useDocuments() {
-  return useQuery({ queryKey: ["documents"], queryFn: () => fetchDocuments() });
-}
-
-function formatSize(bytes: number) {
-  const megabytes = bytes / (1024 * 1024);
-  return megabytes >= 1
-    ? `${megabytes.toFixed(1).replace(".", ",")} Mo`
-    : `${Math.max(1, Math.round(bytes / 1024))} Ko`;
+  return useQuery({
+    queryKey: ["posts"],
+    queryFn: () => fetchPosts(),
+    select: (posts) => posts.filter(isDocumentPost),
+  });
 }
 
 const DATE_LOCALES = { fr: "fr-FR", sw: "sw-TZ", en: "en-GB" } as const;
 
-/** One published file with its download button. */
-export function DocumentCard({ document: file, className }: { document: WpDocument; className?: string }) {
+/** One published document article with a link to its WordPress page. */
+export function DocumentCard({ document: post, className }: { document: WpPost; className?: string }) {
   const { t, locale } = useI18n();
-  const published = new Date(file.date);
+  const published = new Date(post.date);
   const date = Number.isNaN(published.getTime())
     ? ""
     : published.toLocaleDateString(DATE_LOCALES[locale], { day: "2-digit", month: "long", year: "numeric" });
-  const details = [date, file.size ? formatSize(file.size) : ""].filter(Boolean).join(" · ");
   return (
     <li className={cn("flex items-start justify-between gap-5 rounded-lg border border-line p-6", className)}>
       <div className="min-w-0">
-        <span className="material-icon block text-[1.7rem] text-gold-deep" aria-hidden>picture_as_pdf</span>
-        <h3 className="mt-3 break-words text-xl font-semibold text-primary">{file.title}</h3>
-        {details && <p className="mt-2 text-sm text-muted-foreground">{details}</p>}
+        <h3 className="break-words text-xl font-semibold text-primary">{post.title.replace(/<[^>]*>/g, "")}</h3>
+        {date && <p className="mt-2 text-sm text-muted-foreground">{date}</p>}
+        {post.excerpt && <p className="mt-3 text-muted-foreground">{post.excerpt}</p>}
       </div>
       <Button asChild className="shrink-0">
-        <a href={file.url} target="_blank" rel="noopener noreferrer">
-          {t("documents.download")}
-          <span className="material-icon text-[1.1rem]" aria-hidden>download</span>
+        <a href={post.link} target="_blank" rel="noopener noreferrer">
+          {t("common.readArticle")}
+          <span className="material-icon text-[1.1rem]" aria-hidden>arrow_forward</span>
         </a>
       </Button>
     </li>

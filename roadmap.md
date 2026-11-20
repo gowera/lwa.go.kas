@@ -12,7 +12,7 @@ Source brief: `user-uploads://1._RÔLE_ET_OBJECTIF_Agis_comme_une_équipe_pasted
 - [x] Mobile: show the phone number in the top bar and hide the floating WhatsApp button at the page bottom until scrolling up
 - [x] Cahier des recommandations: active services (health Goma/Butembo, security Butembo, development), care vouchers listed, sector photos
 - [x] Butembo photo moved to the locations page banner
-- [x] Documents page and home section ready for PDFs published in the WordPress media library; empty until WordPress is configured
+- [x] Documents page and home section display WordPress posts in the “Documents, rapports” category
 - [x] Complete confirmed location addresses, guichets and hours; test supplied values
 - [x] Move displayed images to public and verify real image loading across pages
 - [x] Replace home opening photograph with the newly supplied group image
@@ -26,7 +26,8 @@ Source brief: `user-uploads://1._RÔLE_ET_OBJECTIF_Agis_comme_une_équipe_pasted
 - [x] Design system: navy nuit / or / blanc tokens, typography, shadows
 - [x] i18n layer FR / SW / EN with visible selector
 - [x] Data layer: company, sectors, locations, services, socials, jobs, trainings, news adapter
-- [x] WordPress adapter for lwagokas.org (inert until configured)
+- [x] WordPress adapter for lwagokas.com (REST endpoint verified and configured in the Oredy build)
+- [ ] Create the WordPress “Documents, rapports” category and assign document posts to it
 - [x] Layout: header (logo slot, nav, language selector, contact button, mobile menu), footer
 - [x] Shared UI: section heading, cards, status badge, pending field, reveal, floating WhatsApp
 - [x] Accueil (hero, qui sommes-nous, 4 secteurs, vision/valeurs, implantations, partenariats, actualités, CTA)
@@ -41,6 +42,6 @@ Source brief: `user-uploads://1._RÔLE_ET_OBJECTIF_Agis_comme_une_équipe_pasted
 - [x] Supplied company photographs optimized and integrated
 - [x] SEO: per-page meta, robots.txt, Open Graph, alt text
 - [ ] Production sitemap: requires the final published domain
-- [ ] WordPress news activation: requires lwagokas.org to be live and configured
+- [x] WordPress news activation: REST API at lwagokas.com is live and configured in production builds
 - [ ] Reviewed SW/EN sector, medical and legal translations: requires company-approved copy
 - [x] Verify: build clean, all routes render, mobile layout, language switch

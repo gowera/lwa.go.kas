@@ -1,6 +1,6 @@
 /**
- * WordPress bridge for https://lwagokas.org.
- * The endpoint is not live yet: with no VITE_WORDPRESS_URL configured the
+ * WordPress bridge for https://lwagokas.com.
+ * With no VITE_WORDPRESS_URL configured the
  * adapter returns empty data instead of fabricating articles or submissions.
  */
 
@@ -16,6 +16,10 @@ export type WpPost = {
   categories: string[];
   featuredImage: string | null;
 };
+
+export const DOCUMENTS_CATEGORY_NAME = "Documents, rapports";
+export const isDocumentPost = (post: Pick<WpPost, "categories">) =>
+  post.categories.includes(DOCUMENTS_CATEGORY_NAME);
 
 const WP_URL = ((import.meta.env.VITE_WORDPRESS_URL as string | undefined) ?? "").replace(/\/$/, "");
 

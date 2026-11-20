@@ -1,10 +1,16 @@
 import { test, expect } from 'bun:test';
 import { file } from 'bun';
-import { fetchDocuments, wordpressEnabled } from './wordpress';
+import { fetchDocuments, isDocumentPost, wordpressEnabled } from './wordpress';
 
 test('No document is invented while WordPress is not configured', async () => {
   expect(wordpressEnabled).toBe(false);
   expect(await fetchDocuments()).toEqual([]);
+});
+
+test('Only posts in the Documents, rapports category are documents', () => {
+  expect(isDocumentPost({ categories: ['Documents, rapports'] })).toBe(true);
+  expect(isDocumentPost({ categories: ['Non classé'] })).toBe(false);
+  expect(isDocumentPost({ categories: ['Documents'] })).toBe(false);
 });
 
 test('No PDF link is hardcoded in the site', async () => {

@@ -107,7 +107,7 @@ export const en: Dict = {
   "home.newsLead": "Announcements, service openings and key moments at LWA.GO.KAS.",
   "home.newsEmpty": "No news has been published yet.",
   "home.newsEmptyNote":
-    "Articles will come from lwagokas.org as soon as that site is online. No article is published before it actually exists.",
+    "News is fetched from the lwagokas.com REST API. No content is fabricated.",
 
   "home.ctaTitle": "Have a project or want to work with us?",
   "home.ctaText": "Our team is available to review your needs and explore ways to collaborate.",
@@ -232,8 +232,8 @@ export const en: Dict = {
   "documents.loading": "Loading documents…",
   "documents.emptyTitle": "No document published yet",
   "documents.emptyText":
-    "Presentation documents will be published on the company's official website. They will appear here automatically, with their publication date.",
-  "documents.note": "Files are published from lwagokas.org, the company's official website.",
+    "Posts in the “Documents, rapports” category will appear here when published.",
+  "documents.note": "This page shows only posts in the “Documents, rapports” category on lwagokas.com.",
   "documents.cta": "View all documents",
   "home.documentsEyebrow": "Publications",
   "home.documentsTitle": "Documents and downloads",

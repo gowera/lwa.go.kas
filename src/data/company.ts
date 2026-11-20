@@ -24,7 +24,7 @@ export const company = {
   /** Not confirmed by the company — rendered as a slot, never as a live link. */
   website: null as string | null,
   wordpress: {
-    /** Set VITE_WORDPRESS_URL to https://lwagokas.org when the site is live. */
+    /** Set VITE_WORDPRESS_URL to the live WordPress site URL. */
     url: (import.meta.env.VITE_WORDPRESS_URL as string | undefined) ?? "",
     enabled: Boolean(import.meta.env.VITE_WORDPRESS_URL),
   },
