@@ -1,4 +1,5 @@
-const publicAsset = (path: string) => `${import.meta.env.BASE_URL}assets/${path}`;
+const publicAsset = (path: string) =>
+  /^https?:\/\//i.test(path) ? path : `${import.meta.env.BASE_URL}assets/${path}`;
 
 export const media = {
   logo: publicAsset('embleme.webp'),
