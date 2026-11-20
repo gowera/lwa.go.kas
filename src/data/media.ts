@@ -1,18 +1,20 @@
+const publicAsset = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
 export const media = {
-  logo: '/embleme.webp',
-  accueil: '/groupe-accueil.webp',
-  facade: '/facade.webp',
-  equipe: '/equipe.webp',
-  groupe: '/equipe-groupe.webp',
-  vehicules: '/vehicules.webp',
-  collaborateurs: '/collaborateurs.webp',
-  rencontre: '/collaborateurs-groupe.webp',
-  entree: '/entree.webp',
-  enseigne: '/enseigne.webp',
-  securite: '/securite-gardiennage.webp',
-  pharmacieFacade: '/pharmacie-facade.webp',
-  pharmacie: '/pharmacie-goma.webp',
-  pharmacieRayons: '/pharmacie-rayons.webp',
+  logo: publicAsset('embleme.webp'),
+  accueil: publicAsset('groupe-accueil.webp'),
+  facade: publicAsset('facade.webp'),
+  equipe: publicAsset('equipe.webp'),
+  groupe: publicAsset('equipe-groupe.webp'),
+  vehicules: publicAsset('vehicules.webp'),
+  collaborateurs: publicAsset('collaborateurs.webp'),
+  rencontre: publicAsset('collaborateurs-groupe.webp'),
+  entree: publicAsset('entree.webp'),
+  enseigne: publicAsset('enseigne.webp'),
+  securite: publicAsset('securite-gardiennage.webp'),
+  pharmacieFacade: publicAsset('pharmacie-facade.webp'),
+  pharmacie: publicAsset('pharmacie-goma.webp'),
+  pharmacieRayons: publicAsset('pharmacie-rayons.webp'),
 };
 export const sectorMedia = [media.entree, media.securite, media.pharmacieFacade, media.facade];
 /** Extra photographs shown on each sector page, by sector order. */
