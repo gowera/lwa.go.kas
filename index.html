@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.png" type="image/png" />
+    <script>
+      const requestedPath = new URLSearchParams(window.location.search).get("__spa_path");
+      if (requestedPath) {
+        const requestedUrl = new URL(requestedPath, window.location.origin);
+        if (requestedUrl.origin === window.location.origin) {
+          window.history.replaceState(
+            null,
+            "",
+            `${requestedUrl.pathname}${requestedUrl.search}${requestedUrl.hash}`,
+          );
+        }
+      }
+    </script>
     <title>LWA.GO.KAS — Professionnalisme, engagement et développement durable</title>
     <meta
       name="description"
