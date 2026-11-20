@@ -182,6 +182,8 @@ export const sw: Dict = {
 
   "news.title": "Habari",
   "news.lead": "Matangazo, ufunguzi wa huduma na matukio muhimu ya LWA.GO.KAS.",
+  "news.loading": "Inapakia makala…",
+  "news.loadError": "Makala haya hayawezi kupakiwa kwa sasa.",
   "news.empty": "Hakuna habari iliyochapishwa kwa sasa.",
   "news.category": "Kundi",
   "news.author": "Mwandishi",

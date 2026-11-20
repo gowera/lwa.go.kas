@@ -32,10 +32,10 @@ export function DocumentCard({ document: post, className }: { document: WpPost; 
         {post.excerpt && <p className="mt-3 text-muted-foreground">{post.excerpt}</p>}
       </div>
       <Button asChild className="shrink-0">
-        <a href={post.link} target="_blank" rel="noopener noreferrer">
+        <Link to={`/actualites/${post.slug}`}>
           {t("common.readArticle")}
           <span className="material-icon text-[1.1rem]" aria-hidden>arrow_forward</span>
-        </a>
+        </Link>
       </Button>
     </li>
   );
@@ -43,10 +43,7 @@ export function DocumentCard({ document: post, className }: { document: WpPost; 
 
 type DocumentsPanelProps = { limit?: number; className?: string };
 
-/**
- * Compact document list for the home page. The empty state says the documents
- * are coming instead of inventing a file.
- */
+/** Compact list of document-category articles for the home page and Documents page. */
 export function DocumentsPanel({ limit, className }: DocumentsPanelProps) {
   const { t } = useI18n();
   const { data = [], isLoading } = useDocuments();

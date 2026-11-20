@@ -40,38 +40,47 @@ function asString(value: unknown, fallback = ""): string {
   return fallback;
 }
 
+function mapPost(raw: unknown): WpPost {
+  const item = raw as Record<string, unknown>;
+  const embedded = (item._embedded ?? {}) as Record<string, unknown>;
+  const author = Array.isArray(embedded.author) ? (embedded.author as Record<string, unknown>[])[0] : undefined;
+  const media = Array.isArray(embedded["wp:featuredmedia"])
+    ? (embedded["wp:featuredmedia"] as Record<string, unknown>[])[0]
+    : undefined;
+  const terms = Array.isArray(embedded["wp:term"])
+    ? (embedded["wp:term"] as Record<string, unknown>[][]).flat()
+    : [];
+  return {
+    id: Number(item.id ?? 0),
+    slug: asString(item.slug),
+    title: asString(item.title),
+    excerpt: asString(item.excerpt).replace(/<[^>]+>/g, "").trim(),
+    content: asString(item.content),
+    date: asString(item.date),
+    link: asString(item.link),
+    author: asString(author?.name, ""),
+    categories: terms.filter((term) => term?.taxonomy === "category").map((term) => asString(term?.name)),
+    featuredImage: media ? asString((media.guid_raw ?? media.guid) as unknown) || null : null,
+  } satisfies WpPost;
+}
+
 /** Returns [] when WordPress is not configured, so pages show an honest empty state. */
 export async function fetchPosts(perPage = 9): Promise<WpPost[]> {
   if (!wordpressEnabled) return [];
   try {
     const data = await getJson(`${WP_URL}/wp-json/wp/v2/posts?_embed&per_page=${perPage}`);
     if (!Array.isArray(data)) return [];
-    return data.map((raw) => {
-      const item = raw as Record<string, unknown>;
-      const embedded = (item._embedded ?? {}) as Record<string, unknown>;
-      const author = Array.isArray(embedded.author) ? (embedded.author as Record<string, unknown>[])[0] : undefined;
-      const media = Array.isArray(embedded["wp:featuredmedia"])
-        ? (embedded["wp:featuredmedia"] as Record<string, unknown>[])[0]
-        : undefined;
-      const terms = Array.isArray(embedded["wp:term"])
-        ? (embedded["wp:term"] as Record<string, unknown>[][]).flat()
-        : [];
-      return {
-        id: Number(item.id ?? 0),
-        slug: asString(item.slug),
-        title: asString(item.title),
-        excerpt: asString(item.excerpt).replace(/<[^>]+>/g, "").trim(),
-        content: asString(item.content),
-        date: asString(item.date),
-        link: asString(item.link),
-        author: asString(author?.name, ""),
-        categories: terms.filter((t) => t?.taxonomy === "category").map((t) => asString(t?.name)),
-        featuredImage: media ? asString((media.guid_raw ?? media.guid) as unknown) || null : null,
-      } satisfies WpPost;
-    });
+    return data.map(mapPost);
   } catch {
     return [];
   }
+}
+
+export async function fetchPostBySlug(slug: string): Promise<WpPost | null> {
+  if (!wordpressEnabled) return null;
+  const data = await getJson(`${WP_URL}/wp-json/wp/v2/posts?slug=${encodeURIComponent(slug)}&_embed`);
+  if (!Array.isArray(data)) return null;
+  return data.length > 0 ? mapPost(data[0]) : null;
 }
 
 export type WpDocument = {

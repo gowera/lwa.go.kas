@@ -252,6 +252,8 @@ export const fr: Dict = {
   // News
   "news.title": "Actualités",
   "news.lead": "Annonces, ouvertures de services et temps forts de LWA.GO.KAS.",
+  "news.loading": "Chargement de l'article…",
+  "news.loadError": "Impossible de charger cet article pour le moment.",
   "news.empty": "Aucune actualité n'est publiée pour le moment.",
   "news.emptyNote":
     "Les articles affichés proviennent de l'API REST de lwagokas.com.",

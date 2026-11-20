@@ -181,6 +181,8 @@ export const en: Dict = {
 
   "news.title": "News",
   "news.lead": "Announcements, service openings and key moments at LWA.GO.KAS.",
+  "news.loading": "Loading article…",
+  "news.loadError": "This article could not be loaded right now.",
   "news.empty": "No news has been published yet.",
   "news.category": "Category",
   "news.author": "Author",

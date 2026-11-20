@@ -16,7 +16,7 @@ import { locations } from '@/data/locations';
 import { media, sectorMedia, sectorGallery, gallery } from '@/data/media';
 import { company, fullAddress, telHref } from '@/data/company';
 import { values } from '@/data/site';
-import { fetchPosts, isDocumentPost } from '@/lib/wordpress';
+import { fetchPostBySlug, fetchPosts, isDocumentPost } from '@/lib/wordpress';
 function Intro({name,path}:{name:string;path:string}){const {t}=useI18n();useSeo({title:`${t(`${name}.title`)} — ${company.name}`,description:t(`${name}.lead`),path});return <PageHero title={t(`${name}.title`)} lead={t(`${name}.lead`)}/>}
 export function About(){const {t}=useI18n();return <><Intro name="about" path="/a-propos"/><section className="container-page section-space grid gap-10 lg:grid-cols-2"><div><SectionHeading title={t('about.presentationTitle')} lead={t('home.aboutText')}/><h2 className="mt-8 text-2xl text-primary">{t('about.missionTitle')}</h2><p className="mt-4 leading-relaxed text-muted-foreground">{t('about.missionText')}</p><PendingField className="mt-8" label={t('about.historyTitle')}/></div><img src={media.equipe} alt={t('media.equipe')} className="aspect-[4/3] w-full rounded-lg object-cover"/></section><section className="bg-muted/50"><div className="container-page section-space"><SectionHeading title={t('home.valuesTitle')}/><div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">{values.map(v=><div key={v.id}><span className="material-icon mb-4 block text-[1.6rem] text-gold-deep" aria-hidden>{v.icon}</span><h3 className="text-xl text-primary">{t(`values.${v.id}.title`)}</h3><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t(`values.${v.id}.text`)}</p></div>)}</div></div></section><section className="container-page section-space"><Button asChild variant="outline"><Link to="/galerie">{t('gallery.title')}<span className="material-icon text-[1.1rem]" aria-hidden>arrow_forward</span></Link></Button></section></>}
 export function SectorDetail(){const {slug}=useParams();const {t}=useI18n();const s=getSector(slug);useSeo({title:`${s ? t(`sector.${s.slug}.name`) : t('notfound.title')} — ${company.name}`,description:s ? t(`sector.${s.slug}.summary`) : t('notfound.text'),path:`/services/${slug}`});if(!s)return <NotFound/>;const k=`sector.${s.slug}`;return <><PageHero title={t(`${k}.name`)} lead={t(`${k}.tagline`)}/><section className="container-page section-space"><div className="grid items-center gap-10 lg:grid-cols-2"><SectionHeading title={t('sector.presentationTitle')} lead={t(`${k}.presentation`)}/><img src={sectorMedia[s.order-1]} alt={t(`media.sector.${s.order-1}`)} className="aspect-[4/3] w-full rounded-lg object-cover"/></div><h2 className="mb-6 mt-12 text-3xl text-primary">{t('sector.servicesTitle')}</h2><div className="grid gap-5 md:grid-cols-2">{s.services.map((v,i)=><article key={v.name} className="rounded-lg border border-line p-6"><StatusBadge status={v.status}/><h3 className="mt-4 text-2xl text-primary">{t(`${k}.service.${i}.name`)}</h3><p className="mt-3 leading-relaxed text-muted-foreground">{t(`${k}.service.${i}.description`)}</p>{v.cities?.length ? <p className="mt-4 flex items-center gap-1.5 text-sm font-semibold"><span className="material-icon text-[1.1rem] text-gold-deep" aria-hidden>location_on</span>{t('sector.availableIn')} {t(`${k}.service.${i}.cities`)}</p> : null}</article>)}</div>{sectorGallery[s.order-1].length>0 && <div className="mt-10 grid gap-5 sm:grid-cols-3">{sectorGallery[s.order-1].map(src=><img key={src} src={src} alt={t(`media.${Object.entries(media).find(([,u])=>u===src)?.[0]}`)} className="aspect-[4/3] w-full rounded-lg object-cover" loading="lazy"/>)}</div>}<div className="mt-12 grid gap-10 lg:grid-cols-2"><div><SectionHeading title={t('sector.benefitsTitle')}/><ul className="mt-5 list-inside list-disc space-y-3 text-muted-foreground">{s.benefits.map((_,i)=><li key={i}>{t(`${k}.benefit.${i}`)}</li>)}</ul></div><SectionHeading title={t('sector.accessTitle')} lead={t(`${k}.access`)}/></div>{s.notice && <div className="mt-8 border-l-2 border-gold bg-muted p-5"><h3 className="text-xl text-primary">{t('sector.noticeTitle')}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{t(`${k}.notice`)}</p></div>}<PendingField className="mt-8" label={t('sector.availableWhere')}/><h2 className="my-6 text-2xl text-primary">{t('sector.contactTitle')}</h2><ContactChannels subject={t(`${k}.name`)}/></section></>}
@@ -71,10 +71,10 @@ export function News() {
                 <h2 className="my-4 text-2xl text-primary">{post.title.replace(/<[^>]*>/g, "")}</h2>
                 <p className="text-muted-foreground">{post.excerpt}</p>
                 <Button asChild variant="link" className="mt-4 px-0">
-                  <a href={post.link} target="_blank" rel="noopener noreferrer">
+                  <Link to={`/actualites/${post.slug}`}>
                     {t("common.readArticle")}
                     <span className="material-icon text-[1.1rem]" aria-hidden>arrow_forward</span>
-                  </a>
+                  </Link>
                 </Button>
               </article>
             ))}
@@ -84,6 +84,66 @@ export function News() {
     </>
   );
 }
+
+export function NewsArticle() {
+  const { slug = "" } = useParams();
+  const { t } = useI18n();
+  const { data: post, isLoading, isError } = useQuery({
+    queryKey: ["post", slug],
+    queryFn: () => fetchPostBySlug(slug),
+    enabled: Boolean(slug),
+  });
+  const title = post?.title.replace(/<[^>]*>/g, "") ?? t("news.title");
+
+  useSeo({
+    title: `${title} — ${company.name}`,
+    description: post?.excerpt || t("news.lead"),
+    path: `/actualites/${slug}`,
+    type: "article",
+  });
+
+  if (isLoading) return <PageHero title={t("news.loading")} />;
+  if (isError) {
+    return (
+      <>
+        <PageHero title={t("news.loadError")} />
+        <section className="container-page py-8">
+          <Button asChild variant="outline">
+            <Link to="/actualites">{t("nav.news")}</Link>
+          </Button>
+        </section>
+      </>
+    );
+  }
+  if (!post) return <NotFound />;
+
+  return (
+    <>
+      <PageHero title={title} lead={post.date.slice(0, 10)} />
+      <article className="container-page section-space">
+        {post.featuredImage && (
+          <img
+            src={post.featuredImage}
+            alt=""
+            className="mb-10 max-h-[32rem] w-full rounded-lg object-cover"
+          />
+        )}
+        {post.content ? (
+          <div
+            className="prose max-w-none prose-headings:text-primary prose-a:text-primary prose-p:text-muted-foreground"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+        ) : (
+          <p className="leading-relaxed text-muted-foreground">{post.excerpt}</p>
+        )}
+        <Button asChild variant="outline" className="mt-10">
+          <Link to="/actualites">{t("nav.news")}</Link>
+        </Button>
+      </article>
+    </>
+  );
+}
+
 export function Documents(){const {t}=useI18n();return <><Intro name="documents" path="/documents"/><section className="container-page section-space"><DocumentsPanel/><p className="mt-8 max-w-3xl text-sm leading-relaxed text-muted-foreground">{t('documents.note')}</p></section></>}
 export function Gallery(){const {t}=useI18n();useSeo({title:`${t('gallery.title')} — ${company.name}`,description:t('gallery.lead'),path:'/galerie'});return <><PageHero title={t('gallery.title')} lead={t('gallery.lead')}/><section className="container-page section-space grid gap-7 sm:grid-cols-2 lg:grid-cols-3">{gallery.map(p=><figure key={p.id}><a href={p.url} target="_blank" rel="noopener noreferrer"><img src={p.url} alt={t(p.alt)} className="aspect-[4/3] w-full rounded-lg bg-muted object-contain" loading="lazy"/></a><figcaption className="mt-3 text-sm text-muted-foreground">{t(p.alt)}</figcaption></figure>)}</section></>}
 export function Legal({privacy=false}:{privacy?:boolean}){const {t}=useI18n();const prefix=privacy?'privacy':'legal';const sections=privacy?['purpose','rights','sharing','cookies']:['editor','hosting','properties','data','liability','contact'];useSeo({title:`${t(`${prefix}.title`)} — ${company.name}`,description:t(privacy?'privacy.intro':'legal.editorText'),path:privacy?'/confidentialite':'/mentions-legales'});return <><PageHero title={t(`${prefix}.title`)}/><section className="container-page section-space"><div className="max-w-3xl">{privacy&&<p className="mb-8 leading-relaxed text-muted-foreground">{t('privacy.directText')}</p>}{sections.map(s=><div key={s} className="mb-8"><h2 className="text-2xl text-primary">{t(`${prefix}.${s}Title`)}</h2><p className="mt-4 leading-relaxed text-muted-foreground">{t(`${prefix}.${s}Text`)}</p></div>)}<ContactChannels/></div></section></>}
