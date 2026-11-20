@@ -11,7 +11,7 @@
 - Colors, shadows and radii come from the semantic tokens in `src/index.css`; components use token-based utilities only. Why: centralized palette roles let a brand refresh reach every page without hardcoded colors.
 - Each route sets its own SEO title and description via the `useSeo` hook. Why: per-page SEO is a brief requirement and the static `index.html` cannot cover every page.
 
-- Displayed company photos and logo are served from `public/` with root-relative paths centralized in `src/data/media.ts`; images do not establish operational status, authorizations, addresses or personal roles. Why: the user explicitly requested portable public images after production loading failures.
+- Displayed company photos and logo are served from `public/assets/` with base-aware paths centralized in `src/data/media.ts`; images do not establish operational status, authorizations, addresses or personal roles. Why: production asset loaders expect images under `assets/`.
 - City records include status-bearing sites and separate withdrawal schedules; confirmed opening hours do not activate sector services. Why: city presence and service authorization are independent facts.
 - Shared institutional interior pages are exported from `src/pages/PortalPages.tsx`, while the home and services index have their own modules. Why: common page shells and direct-contact flows stay consistent.
 - Sector and location display copy is mapped into the shared i18n dictionary from company data; unreviewed locale entries use French. Why: data remains authoritative and sensitive copy is never automatically translated.
