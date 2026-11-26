@@ -7,6 +7,7 @@ import { PendingField } from '@/components/PendingField';
 import { StatusBadge } from '@/components/StatusBadge';
 import { ContactChannels } from '@/components/ContactChannels';
 import { DocumentsPanel } from '@/components/DocumentsPanel';
+import { ArticleEngagement } from '@/components/ArticleEngagement';
 import { RequestPanel, type RequestField } from '@/components/RequestPanel';
 import { Button } from '@/components/ui/button';
 import { useI18n } from '@/i18n/LanguageProvider';
@@ -130,12 +131,13 @@ export function NewsArticle() {
         )}
         {post.content ? (
           <div
-            className="prose max-w-none prose-headings:text-primary prose-a:text-primary prose-p:text-muted-foreground"
+            className="prose max-w-none prose-headings:text-primary prose-a:text-primary prose-p:text-muted-foreground prose-li:text-muted-foreground prose-strong:text-foreground prose-blockquote:border-primary prose-blockquote:text-muted-foreground"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         ) : (
           <p className="leading-relaxed text-muted-foreground">{post.excerpt}</p>
         )}
+        <ArticleEngagement post={post} />
         <Button asChild variant="outline" className="mt-10">
           <Link to="/actualites">{t("nav.news")}</Link>
         </Button>

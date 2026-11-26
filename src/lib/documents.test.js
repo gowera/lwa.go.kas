@@ -1,6 +1,6 @@
 import { test, expect } from 'bun:test';
 import { file } from 'bun';
-import { fetchDocuments, isDocumentPost, mapPost, wordpressEnabled } from './wordpress';
+import { containsHtmlTags, fetchDocuments, isDocumentPost, mapPost, wordpressEnabled } from './wordpress';
 
 test('No document is invented while WordPress is not configured', async () => {
   expect(wordpressEnabled).toBe(false);
@@ -22,6 +22,11 @@ test('Featured image uses the WordPress media source URL', () => {
   });
 
   expect(post.featuredImage).toBe('https://lwagokas.com/wp-content/uploads/featured.webp');
+});
+
+test('Comment input rejects HTML tags, including scripts', () => {
+  expect(containsHtmlTags('<script>alert(1)</script>')).toBe(true);
+  expect(containsHtmlTags('Texte normal sans balise')).toBe(false);
 });
 
 test('No PDF link is hardcoded in the site', async () => {

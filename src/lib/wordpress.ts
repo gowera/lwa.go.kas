@@ -15,11 +15,13 @@ export type WpPost = {
   author: string;
   categories: string[];
   featuredImage: string | null;
+  commentsOpen: boolean;
 };
 
 export const DOCUMENTS_CATEGORY_NAME = "Documents, rapports";
 export const isDocumentPost = (post: Pick<WpPost, "categories">) =>
   post.categories.includes(DOCUMENTS_CATEGORY_NAME);
+export const containsHtmlTags = (content: string) => /<\/?[a-z][^>]*>/i.test(content);
 
 const WP_URL = ((import.meta.env.VITE_WORDPRESS_URL as string | undefined) ?? "").replace(/\/$/, "");
 
@@ -63,6 +65,7 @@ export function mapPost(raw: unknown): WpPost {
     featuredImage: media
       ? asString(media.source_url) || asString((media.guid_raw ?? media.guid) as unknown) || null
       : null,
+    commentsOpen: item.comment_status === "open",
   } satisfies WpPost;
 }
 
@@ -83,6 +86,30 @@ export async function fetchPostBySlug(slug: string): Promise<WpPost | null> {
   const data = await getJson(`${WP_URL}/wp-json/wp/v2/posts?slug=${encodeURIComponent(slug)}&_embed`);
   if (!Array.isArray(data)) return null;
   return data.length > 0 ? mapPost(data[0]) : null;
+}
+
+export type WpCommentInput = {
+  postId: number;
+  authorName: string;
+  authorEmail: string;
+  content: string;
+};
+
+export async function submitPostComment(input: WpCommentInput): Promise<"pending" | "received"> {
+  if (!wordpressEnabled) throw new Error("WordPress comments are not configured.");
+  const response = await fetch(`${WP_URL}/wp-json/wp/v2/comments`, {
+    method: "POST",
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    body: JSON.stringify({
+      post: input.postId,
+      author_name: input.authorName,
+      author_email: input.authorEmail,
+      content: input.content,
+    }),
+  });
+  if (!response.ok) throw new Error(`WordPress comment submission failed: ${response.status}`);
+  const result = (await response.json()) as { status?: unknown };
+  return result.status === "hold" || result.status === "pending" ? "pending" : "received";
 }
 
 export type WpDocument = {
