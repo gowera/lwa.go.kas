@@ -40,7 +40,7 @@ function asString(value: unknown, fallback = ""): string {
   return fallback;
 }
 
-function mapPost(raw: unknown): WpPost {
+export function mapPost(raw: unknown): WpPost {
   const item = raw as Record<string, unknown>;
   const embedded = (item._embedded ?? {}) as Record<string, unknown>;
   const author = Array.isArray(embedded.author) ? (embedded.author as Record<string, unknown>[])[0] : undefined;
@@ -60,7 +60,9 @@ function mapPost(raw: unknown): WpPost {
     link: asString(item.link),
     author: asString(author?.name, ""),
     categories: terms.filter((term) => term?.taxonomy === "category").map((term) => asString(term?.name)),
-    featuredImage: media ? asString((media.guid_raw ?? media.guid) as unknown) || null : null,
+    featuredImage: media
+      ? asString(media.source_url) || asString((media.guid_raw ?? media.guid) as unknown) || null
+      : null,
   } satisfies WpPost;
 }
 

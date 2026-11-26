@@ -1,6 +1,6 @@
 import { test, expect } from 'bun:test';
 import { file } from 'bun';
-import { fetchDocuments, isDocumentPost, wordpressEnabled } from './wordpress';
+import { fetchDocuments, isDocumentPost, mapPost, wordpressEnabled } from './wordpress';
 
 test('No document is invented while WordPress is not configured', async () => {
   expect(wordpressEnabled).toBe(false);
@@ -11,6 +11,17 @@ test('Only posts in the Documents, rapports category are documents', () => {
   expect(isDocumentPost({ categories: ['Documents, rapports'] })).toBe(true);
   expect(isDocumentPost({ categories: ['Non classé'] })).toBe(false);
   expect(isDocumentPost({ categories: ['Documents'] })).toBe(false);
+});
+
+test('Featured image uses the WordPress media source URL', () => {
+  const post = mapPost({
+    id: 1,
+    _embedded: {
+      'wp:featuredmedia': [{ source_url: 'https://lwagokas.com/wp-content/uploads/featured.webp' }],
+    },
+  });
+
+  expect(post.featuredImage).toBe('https://lwagokas.com/wp-content/uploads/featured.webp');
 });
 
 test('No PDF link is hardcoded in the site', async () => {
